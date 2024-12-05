@@ -1,5 +1,10 @@
 import React from "react";
 import '@/app/homePage/homepage.css'
+import profile_picture from "@/app/assets/me_batcheditor_fotor.png"
+import Image from "next/image";
+import LindeinIcon from "@/app/assets/LinkedIn_icon.svg.png"
+import roundedImage from "@/app/assets/round-text.png"
+import 'bootstrap/dist/css/bootstrap.min.css';
 // import overlay from "@/"
 const Homepage = () => {
   return (
@@ -58,22 +63,24 @@ const Homepage = () => {
           <span className="name">Dheeraj P Girish</span>
           <span className="designation2">Software Engineer</span>
         </div>
-        <img
+        {/* <img
           className="me"
           src="assets/images/me_batcheditor_fotor.png"
           alt="Me"
-        />
+        /> */}
+        <Image src={profile_picture} alt="Me"/>
         <h5 className="email">dheerajpgirsh09@gmail.com</h5>
         <h5 className="address">Base in Bengaluru, KA</h5>
         {/* <p class="copyright">&copy; 2022 Drake. All Rights Reserved</p> */}
         <ul className="d-flex align-items-center flex-wrap justify-content-center">
           <li>
             <a href="https://www.linkedin.com/in/dheeraj-p-girish/">
-              <img
+              {/* <img
                 src="assets/images/LinkedIn_icon.svg.png "
                 style={{ width: 25, height: 25 }}
                 alt="React"
-              />
+              /> */}
+              <Image src={LindeinIcon} alt="React" style={{ width: 25, height: 25 }}/>
             </a>
           </li>
         </ul>
@@ -151,10 +158,11 @@ const Homepage = () => {
                     className="go-to-project-btn scroll-to scroll-animation"
                     data-animation="rotate_up"
                   >
-                    <img
+                    {/* <img
                       src="assets/images/round-text.png"
                       alt="Rounded Text"
-                    />
+                    /> */}
+                    <Image src={roundedImage} alt="Rounded Text"/>
                     <i className="las la-arrow-down" />
                   </a>
                   <div className="facts d-flex">
