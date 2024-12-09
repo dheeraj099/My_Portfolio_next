@@ -10,9 +10,12 @@ import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import Htmlimage from "@/app/assets/HTML5_logo_black.png";
 import JavascriptImage from "@/app/assets/JavaScript-logo2.png";
 import ReactImage from "@/app/assets/React-icon.2svg.png";
+import NextJs from "@/app/assets/nextjsLogo.png"
 import "line-awesome/dist/line-awesome/css/line-awesome.css";
 import { motion } from "framer-motion"; // Import motion from framer-motion
+import AiotelProject from "@/app/assets/aiotel_project2.png"
 import "@/app/homePage/themes.css";
+import Link from "next/link";
 // import "@/app/homePage/custom.css";
 // import overlay from "@/"
 const Homepage = () => {
@@ -225,7 +228,7 @@ const Homepage = () => {
                   <motion.div
                     className="section-header"
                     initial={{ opacity: 0, y: 100 }} // Initial state
-                    whileInView={{ opacity: 1, y: 0 }} // State when in view
+                    whileInView={{ opacity: 1, y: 0, zIndex: 1 }} // State when in view
                     transition={{ duration: 0.7 }} // Transition duration
                     viewport={{ once: true }} // Animation will trigger every time
                   >
@@ -245,26 +248,29 @@ const Homepage = () => {
                   <motion.div
                     className="resume-timeline"
                     initial={{ opacity: 0, x: 100 }} // Initial state (off-screen to the right)
-                    whileInView={{ opacity: 1, x: 0 }} // State when in view (onscreen)
+                    whileInView={{ opacity: 1, x: 0, zIndex: 1 }} // State when in view (onscreen)
                     transition={{ duration: 0.7 }} // Transition duration
                     viewport={{ once: true }} // Animation will trigger only once
                   >
-                    <div
+                    <motion.div
                       className="item scroll-animation"
-                      data-animation="fade_from_right"
+                      initial={{ opacity: 0, x: 100 }} // Initial state (off-screen to the right)
+                      whileInView={{ opacity: 1, x: 0, zIndex: 1 }} // State when in view (onscreen)
+                      transition={{ duration: 0.7 }} // Transition duration
+                      viewport={{ once: true }} // Animation will trigger only once
                     >
                       <span className="date">2020-2022</span>
                       <h2>Master of Computer Applications (MCA)</h2>
                       <p>Jain University</p>
-                    </div>
-                    <div
+                    </motion.div>
+                    <motion.div
                       className="item scroll-animation"
-                      data-animation="fade_from_right"
+                      whileInView={{ opacity: 1, x: 0, zIndex: 1 }} // State when in view (onscreen)
                     >
                       <span className="date">2017-2020 </span>
                       <h2>Bachelor of Computer Applications (BCA)</h2>
                       <p>Jain University</p>
-                    </div>
+                    </motion.div>
                   </motion.div>
                   <br />
                   <br />
@@ -284,9 +290,12 @@ const Homepage = () => {
                     transition={{ duration: 0.7 }} // Transition duration
                     viewport={{ once: true }} // Animation will trigger only once
                   >
-                    <div
+                    <motion.div
                       className="item scroll-animation"
-                      data-animation="fade_from_right"
+                      initial={{ opacity: 0, x: 100 }} // Initial state (off-screen to the right)
+                      whileInView={{ opacity: 1, x: 0, zIndex: 1 }} // State when in view (onscreen)
+                      transition={{ duration: 0.7 }} // Transition duration
+                      viewport={{ once: true }} // Animation will trigger only once
                     >
                       <span className="date">July 2022 - Present </span>
                       <h2>Software Engineer</h2>
@@ -318,10 +327,10 @@ const Homepage = () => {
                           Tiles, IFC).{" "}
                         </li>
                       </ul>
-                    </div>
-                    <div
+                    </motion.div>
+                    <motion.div
                       className="item scroll-animation"
-                      data-animation="fade_from_right"
+                      whileInView={{ opacity: 1, x: 0, zIndex: 1 }} // State when in view (onscreen)
                     >
                       <span className="date">April 2021 - September 2021 </span>
                       <h2>Graphic Designer</h2>
@@ -335,7 +344,7 @@ const Homepage = () => {
                           Lightroom.{" "}
                         </li>
                       </ul>
-                    </div>
+                    </motion.div>
                     <div
                       className="item scroll-animation"
                       data-animation=""
@@ -376,14 +385,12 @@ const Homepage = () => {
                       data-animation="fade_from_right"
                     >
                       <div className="skill">
-                        <div className="skill-inner">
-                          {/* <img
-                            src="assets/HTML5_logo_black.png"
-                            alt="React"
-                          /> */}
-                          {/* <h1 class="percent">90%</h1> */}
+                        <motion.div className="skill-inner" whileHover={{
+                          backgroundColor: "#983e26",
+                          transition: { duration: 0.3 }, // Smooth transition
+                        }}>
                           <Image src={Htmlimage} alt="React" />
-                        </div>
+                        </motion.div>
                         <p className="name">HTML</p>
                       </div>
                     </div>
@@ -392,13 +399,12 @@ const Homepage = () => {
                       data-animation="fade_from_left"
                     >
                       <div className="skill">
-                        <div className="skill-inner">
-                          {/* <img
-                            src="assets/images/JavaScript-logo2.png"
-                            alt="JavaScript"
-                          /> */}
+                        <motion.div className="skill-inner" whileHover={{
+                          backgroundColor: "#8f823d",
+                          transition: { duration: 0.3 }, // Smooth transition
+                        }}>
                           <Image src={JavascriptImage} alt="Javascript" />
-                        </div>
+                        </motion.div>
                         <p className="name">JavaScript</p>
                       </div>
                     </div>
@@ -407,13 +413,12 @@ const Homepage = () => {
                       data-animation="fade_from_left"
                     >
                       <div className="skill">
-                        <div className="skill-inner">
-                          {/* <img
-                            src="assets/images/React-icon.2svg.png"
-                            alt="React"
-                          /> */}
+                        <motion.div className="skill-inner" whileHover={{
+                          backgroundColor: "#377a9c",
+                          transition: { duration: 0.3 }, // Smooth transition
+                        }}>
                           <Image src={ReactImage} alt="React" />
-                        </div>
+                        </motion.div>
                         <p className="name">React.js</p>
                       </div>
                     </div>
@@ -422,10 +427,14 @@ const Homepage = () => {
                       data-animation="fade_from_bottom"
                     >
                       <div className="skill">
-                        <div className="skill-inner">
+                        <motion.div className="skill-inner"
+                          whileHover={{
+                            backgroundColor: "#377a9c",
+                            transition: { duration: 0.3 }, // Smooth transition
+                          }}>
                           <Image src={ReactImage} alt="React Native" />
                           {/* <h1 class="percent">85%</h1> */}
-                        </div>
+                        </motion.div>
                         <p className="name">React Native</p>
                       </div>
                     </div>
@@ -434,13 +443,14 @@ const Homepage = () => {
                       data-animation="fade_from_top"
                     >
                       <div className="skill">
-                        <div className="skill-inner">
-                          <img
-                            src="assets/images/Tailwind_CSS_Logo.png"
-                            alt="Webflow"
-                          />
-                          {/* <h1 class="percent">80%</h1> */}
-                        </div>
+                        <motion.div className="skill-inner"
+                          whileHover={{
+                            backgroundColor: "#aeadb9",
+                            transition: { duration: 0.3 }, // Smooth transition
+                          }}>
+                          <Image src={NextJs} alt="Next js" />
+
+                        </motion.div>
                         <p className="name">Next</p>
                       </div>
                     </div>
@@ -454,7 +464,11 @@ const Homepage = () => {
             >
               <div className="custom-container">
                 <div className="portfolio-content content-width">
-                  <div className="section-header">
+                  <motion.div className="section-header" initial={{ opacity: 0, y: 100 }} // Initial state
+                    whileInView={{ opacity: 1, y: 0, zIndex: 1 }} // State when in view
+                    transition={{ duration: 0.7 }} // Transition duration
+                    viewport={{ once: true }} // Animation will trigger every time
+                  >
                     <h4
                       className="subtitle scroll-animation"
                       data-animation="fade_from_bottom"
@@ -468,7 +482,7 @@ const Homepage = () => {
                       Featured
                       <span>Project</span>
                     </h1>
-                  </div>
+                  </motion.div>
                   <div className="row portfolio-items">
                     <div
                       className="col-md-12 scroll-animation"
@@ -480,35 +494,33 @@ const Homepage = () => {
                             href="assets/images/portfolio1.jpg"
                             data-lightbox="example-1"
                           >
-                            <img
+                            {/* <img
                               src="assets/images/portfolio1.jpg"
                               alt="Portfolio"
-                            />
+                            /> */}
+                            <Image src={AiotelProject} alt="Featured Project" />
                           </a>
                           <ul className="portfolio-categories">
                             <li>
-                              <a href="#">Figma</a>
+                              <a href="#">Next js</a>
                             </li>
                             <li>
-                              <a href="#">Framer</a>
+                              <a href="#">Three js</a>
                             </li>
                             <li>
-                              <a href="#">WordPress</a>
+                              <a href="#">Tailwind</a>
                             </li>
                           </ul>
                         </div>
                         <div className="projects_see_all">
                           <h2>
-                            <a href="#">Bureau - Architecture Studio Website</a>
+                            <a href="#">AIOTEL - Three js based website</a>
                           </h2>
-                          <h6
-                            className="scroll-animation"
-                            data-animation="fade_from_left"
-                          >
-                            <a href="../../../be.beantownthemes.net/html/content/betheme/portfolio.html">
-                              See all projects
-                            </a>
-                          </h6>
+                          <Link className="all_Project" href="/projectsPage"> See all projects</Link>
+                          {/* <a className="all_Project" href="">
+                            See all projects
+                          </a> */}
+
                         </div>
                       </div>
                     </div>
@@ -607,9 +619,9 @@ const Homepage = () => {
               </div>
           </section> */}
           </div>
-        </div>
-      </main>
-    </div>
+        </div >
+      </main >
+    </div >
   );
 };
 

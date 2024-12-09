@@ -921,13 +921,13 @@ body .body-overlay {
 }
 .resume-area .resume-content .resume-timeline .item::after {
   content: '';
-  background: red;
+  background: #656565;
   width: 1px;
   height: 100%;
   position: absolute;
   left: 0;
   top: 10px;
-  z-index: -1;
+  /* z-index: -1 !important; */
 }
 .resume-area .resume-content .resume-timeline .item::before {
   content: '';
@@ -965,6 +965,7 @@ body .body-overlay {
 }
 .resume-area .resume-content .resume-timeline .item:hover::before {
   background: var(--primary_color);
+  z-index: 2;
 }
 .resume-area .resume-content .resume-timeline .item:hover .date {
   color: var(--primary_color);
@@ -1042,10 +1043,12 @@ body .body-overlay {
   padding: 80px 0 80px 0;
   margin-bottom: 20px;
   transition: .3s;
+  position: relative;
+  z-index: 2;
 }
-.skills .skill:hover .skill-inner {
+/* .skills .skill:hover .skill-inner {
   border-color: var(--primary_color);
-}
+} */
 .skills .skill .skill-inner img {
   display: block;
   margin: auto auto auto auto;
@@ -1083,6 +1086,7 @@ body .body-overlay {
   border-radius: 30px;
   position: relative;
   margin-bottom: 30px;
+  z-index: 2;
 }
 .portfolio-items .portfolio-item.portfolio-full .portfolio-item-inner {
   height: 410px;
@@ -2049,9 +2053,12 @@ body .body-overlay {
 .projects_see_all{
   display: flex;
   justify-content: space-between;
+  z-index: 2;
+  color: #ffffff;
 }
-
-
+.all_Project{
+  z-index: 999;
+}
 
 
 @media (max-width: 2000px) {
