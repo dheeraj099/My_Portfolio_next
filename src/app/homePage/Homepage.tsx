@@ -1,21 +1,26 @@
+"use client";
 import React from "react";
-import '@/app/homePage/homepage.css'
-import profile_picture from "@/app/assets/me_batcheditor_fotor.png"
+import "@/app/homePage/homepage.css";
+import profile_picture from "@/app/assets/me_batcheditor_fotor.png";
 import Image from "next/image";
-import LindeinIcon from "@/app/assets/LinkedIn_icon.svg.png"
-import roundedImage from "@/app/assets/round-text.png"
-import 'bootstrap/dist/css/bootstrap.min.css';
+import LindeinIcon from "@/app/assets/LinkedIn_icon.svg.png";
+import roundedImage from "@/app/assets/round-text.png";
+import "bootstrap/dist/css/bootstrap.min.css";
+import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
+import Htmlimage from "@/app/assets/HTML5_logo_black.png";
+import JavascriptImage from "@/app/assets/JavaScript-logo2.png";
+import ReactImage from "@/app/assets/React-icon.2svg.png";
+import "line-awesome/dist/line-awesome/css/line-awesome.css";
+import { motion } from "framer-motion"; // Import motion from framer-motion
+import "@/app/homePage/themes.css";
+// import "@/app/homePage/custom.css";
 // import overlay from "@/"
 const Homepage = () => {
   return (
-    <>
+    <div className="home1-page">
       <video id="overlay_video" className="body-overlay" muted autoPlay loop>
         <source src="/videoTrial2.mp4" type="video/mp4" />
       </video>
-      {/* <div id="overlay"></div> */}
-      {/* <div className="page-loader">
-        <div className="bounceball" />
-      </div> */}
       <ul className="menu scroll-nav d-flex">
         <li>
           <a className="scroll-to" href="#home">
@@ -32,11 +37,7 @@ const Homepage = () => {
             <span>Resume</span> <i className="las la-briefcase" />
           </a>
         </li>
-        <li>
-          <a className="scroll-to" href="#services">
-            <span>Services</span> <i className="las la-stream" />
-          </a>
-        </li>
+
         <li>
           <a className="scroll-to" href="#skills">
             <span>Skills</span> <i className="las la-shapes" />
@@ -45,16 +46,6 @@ const Homepage = () => {
         <li>
           <a className="scroll-to" href="#portfolio">
             <span>Portfolios</span> <i className="las la-grip-vertical" />
-          </a>
-        </li>
-        <li>
-          <a className="scroll-to" href="#testimonial">
-            <span>Testimonial</span> <i className="lar la-comment" />
-          </a>
-        </li>
-        <li>
-          <a className="scroll-to" href="#contact">
-            <span>Contact</span> <i className="las la-envelope" />
           </a>
         </li>
       </ul>
@@ -68,7 +59,7 @@ const Homepage = () => {
           src="assets/images/me_batcheditor_fotor.png"
           alt="Me"
         /> */}
-        <Image src={profile_picture} alt="Me"/>
+        <Image src={profile_picture} alt="Me" />
         <h5 className="email">dheerajpgirsh09@gmail.com</h5>
         <h5 className="address">Base in Bengaluru, KA</h5>
         {/* <p class="copyright">&copy; 2022 Drake. All Rights Reserved</p> */}
@@ -80,7 +71,11 @@ const Homepage = () => {
                 style={{ width: 25, height: 25 }}
                 alt="React"
               /> */}
-              <Image src={LindeinIcon} alt="React" style={{ width: 25, height: 25 }}/>
+              <Image
+                src={LindeinIcon}
+                alt="React"
+                style={{ width: 25, height: 25 }}
+              />
             </a>
           </li>
         </ul>
@@ -158,11 +153,7 @@ const Homepage = () => {
                     className="go-to-project-btn scroll-to scroll-animation"
                     data-animation="rotate_up"
                   >
-                    {/* <img
-                      src="assets/images/round-text.png"
-                      alt="Rounded Text"
-                    /> */}
-                    <Image src={roundedImage} alt="Rounded Text"/>
+                    <Image src={roundedImage} alt="Rounded Text" />
                     <i className="las la-arrow-down" />
                   </a>
                   <div className="facts d-flex">
@@ -189,7 +180,13 @@ const Homepage = () => {
               id="about"
             >
               <div className="custom-container">
-                <div className="about-content content-width">
+                <motion.div
+                  className="about-content content-width"
+                  initial={{ opacity: 0, y: 100 }} // Initial state
+                  whileInView={{ opacity: 1, y: 0 }} // State when in view
+                  transition={{ duration: 0.5 }} // Transition duration
+                  viewport={{ once: true }} // Animation will trigger every time
+                >
                   <div className="section-header">
                     <h4
                       className="subtitle scroll-animation"
@@ -216,7 +213,7 @@ const Homepage = () => {
                     in my skills, always curious to learn more, and continuously
                     improving my craft.
                   </p>
-                </div>
+                </motion.div>
               </div>
             </section>
             <section
@@ -225,7 +222,13 @@ const Homepage = () => {
             >
               <div className="custom-container">
                 <div className="resume-content content-width">
-                  <div className="section-header">
+                  <motion.div
+                    className="section-header"
+                    initial={{ opacity: 0, y: 100 }} // Initial state
+                    whileInView={{ opacity: 1, y: 0 }} // State when in view
+                    transition={{ duration: 0.7 }} // Transition duration
+                    viewport={{ once: true }} // Animation will trigger every time
+                  >
                     <h4
                       className="subtitle scroll-animation"
                       data-animation="fade_from_bottom"
@@ -238,8 +241,14 @@ const Homepage = () => {
                     >
                       Education
                     </h1>
-                  </div>
-                  <div className="resume-timeline">
+                  </motion.div>
+                  <motion.div
+                    className="resume-timeline"
+                    initial={{ opacity: 0, x: 100 }} // Initial state (off-screen to the right)
+                    whileInView={{ opacity: 1, x: 0 }} // State when in view (onscreen)
+                    transition={{ duration: 0.7 }} // Transition duration
+                    viewport={{ once: true }} // Animation will trigger only once
+                  >
                     <div
                       className="item scroll-animation"
                       data-animation="fade_from_right"
@@ -256,13 +265,25 @@ const Homepage = () => {
                       <h2>Bachelor of Computer Applications (BCA)</h2>
                       <p>Jain University</p>
                     </div>
-                  </div>
+                  </motion.div>
                   <br />
                   <br />
-                  <div className="section-header">
+                  <motion.div
+                    initial={{ opacity: 0, y: 100 }} // Initial state
+                    whileInView={{ opacity: 1, y: 0 }} // State when in view
+                    transition={{ duration: 0.7 }} // Transition duration
+                    viewport={{ once: true }} // Animation will trigger every time
+                    className="section-header"
+                  >
                     <h1 data-animation="fade_from_bottom">Experience</h1>
-                  </div>
-                  <div className="resume-timeline">
+                  </motion.div>
+                  <motion.div
+                    className="resume-timeline"
+                    initial={{ opacity: 0, x: 100 }} // Initial state (off-screen to the right)
+                    whileInView={{ opacity: 1, x: 0 }} // State when in view (onscreen)
+                    transition={{ duration: 0.7 }} // Transition duration
+                    viewport={{ once: true }} // Animation will trigger only once
+                  >
                     <div
                       className="item scroll-animation"
                       data-animation="fade_from_right"
@@ -319,7 +340,7 @@ const Homepage = () => {
                       className="item scroll-animation"
                       data-animation=""
                     ></div>
-                  </div>
+                  </motion.div>
                 </div>
               </div>
             </section>
@@ -329,26 +350,39 @@ const Homepage = () => {
             >
               <div className="custom-container">
                 <div className="skills-content content-width">
-                  <div className="section-header">
+                  <motion.div
+                    className="section-header"
+                    initial={{ opacity: 0, y: 100 }} // Initial state
+                    whileInView={{ opacity: 1, y: 0 }} // State when in view
+                    transition={{ duration: 0.7 }} // Transition duration
+                    viewport={{ once: true }} // Animation will trigger every time
+                  >
                     <h4
                       className="subtitle scroll-animation"
                       data-animation="fade_from_bottom"
                     >
                       <i className="las la-shapes" /> my skills
                     </h4>
-                  </div>
-                  <div className="row skills text-center">
+                  </motion.div>
+                  <motion.div
+                    className="row skills text-center"
+                    initial={{ opacity: 0, scale: 0.8 }} // Start with 0 opacity and slightly scaled down
+                    whileInView={{ opacity: 1, scale: 1 }} // Fade in and grow to normal size
+                    transition={{ duration: 0.8, ease: "easeOut" }} // Smooth transition
+                    viewport={{ once: true }} // Trigger the animation only once
+                  >
                     <div
                       className="col-md-4 scroll-animation"
                       data-animation="fade_from_right"
                     >
                       <div className="skill">
                         <div className="skill-inner">
-                          <img
-                            src="assets/images/HTML5_logo_black.png"
+                          {/* <img
+                            src="assets/HTML5_logo_black.png"
                             alt="React"
-                          />
+                          /> */}
                           {/* <h1 class="percent">90%</h1> */}
+                          <Image src={Htmlimage} alt="React" />
                         </div>
                         <p className="name">HTML</p>
                       </div>
@@ -359,10 +393,11 @@ const Homepage = () => {
                     >
                       <div className="skill">
                         <div className="skill-inner">
-                          <img
+                          {/* <img
                             src="assets/images/JavaScript-logo2.png"
                             alt="JavaScript"
-                          />
+                          /> */}
+                          <Image src={JavascriptImage} alt="Javascript" />
                         </div>
                         <p className="name">JavaScript</p>
                       </div>
@@ -373,10 +408,11 @@ const Homepage = () => {
                     >
                       <div className="skill">
                         <div className="skill-inner">
-                          <img
+                          {/* <img
                             src="assets/images/React-icon.2svg.png"
                             alt="React"
-                          />
+                          /> */}
+                          <Image src={ReactImage} alt="React" />
                         </div>
                         <p className="name">React.js</p>
                       </div>
@@ -387,10 +423,7 @@ const Homepage = () => {
                     >
                       <div className="skill">
                         <div className="skill-inner">
-                          <img
-                            src="assets/images/React-icon.2svg.png"
-                            alt="Framer"
-                          />
+                          <Image src={ReactImage} alt="React Native" />
                           {/* <h1 class="percent">85%</h1> */}
                         </div>
                         <p className="name">React Native</p>
@@ -411,7 +444,7 @@ const Homepage = () => {
                         <p className="name">Next</p>
                       </div>
                     </div>
-                  </div>
+                  </motion.div>
                 </div>
               </div>
             </section>
@@ -576,7 +609,7 @@ const Homepage = () => {
           </div>
         </div>
       </main>
-    </>
+    </div>
   );
 };
 
