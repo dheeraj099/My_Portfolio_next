@@ -1,35 +1,4 @@
 
-/* 
-    -- Table of Content --
-
-    * 01 - Menu
-    * 02 - Responsive Sidebar Menu
-    * 03 - Global Color
-    * 04 - Header
-    * 05 - Section Header
-    * 06 - Left Sidebar
-    * 07 - Hero Section
-    * 08 - Home 3
-    * 09 - Home 5
-    * 10 - About
-    * 11 - Resume
-    * 12 - Services
-    * 13 - Skills
-    * 14 - Portfolio
-    * 15 - Testimonial
-    * 16 - Client
-    * 17 - Pricing Table
-    * 18 - Contact
-    * 19 - Breadcrumb
-    * 20 - Blog items
-    * 21 - Blog Style 2
-    * 22 - Blog Details
-    * 23 - Comment
-    * 24 - Comment Form
-    * 25 - Footer
-    * @Keyframe
-
-*/
 :root {
   --primary_color: #28e98c;
 }
@@ -43,7 +12,7 @@ body {
   font-family: 'Inter', sans-serif;
   font-size: 16px;
   scroll-behavior: smooth;
-  color: #999999;
+  /* color: #999999; */
   background: #1f1f1f;
   line-height: 1.7;
   overflow-x: hidden;
@@ -108,10 +77,10 @@ ul {
   text-transform: uppercase;
   font-weight: 300;
   margin: 0;
-  border: 1px solid #565656;
+  /* border: 1px solid #565656; */
   padding: 9px 20px;
   border-radius: 30px;
-  margin-bottom: 53px;
+  margin-bottom: 23px;
   display: inline-flex;
   align-items: center;
 }
@@ -1204,7 +1173,7 @@ body .body-overlay {
   border-color: var(--primary_color);
   color: var(--primary_color);
 }
-.testimonial-area .testimonial-slider-wrap .testimonial-footer-nav .testimonial-nav #testimonial-slide-count {
+.home1-page .testimonial-area .testimonial-slider-wrap .testimonial-footer-nav .testimonial-nav #testimonial-slide-count {
   font-size: 13px;
   color: #666666;
   font-weight: 300;

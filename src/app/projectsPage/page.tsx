@@ -14,7 +14,7 @@ const page = () => {
   return (
     <div className="flex flex-col">
       <div className="flex flex-col w-full h-screen bg-black items-center justify-center">
-        <span className="text-[80px]">Let’s Take a Tour!</span>
+        <span className="text-[80px] text-white">Let’s Take a Tour!</span>
         <span className="text-center absolute bottom-32 text-md">
           Explore the projects <br />
           that define my journey and expertise
