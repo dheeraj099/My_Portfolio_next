@@ -16,6 +16,8 @@ import { motion } from "framer-motion"; // Import motion from framer-motion
 import AiotelProject from "@/app/assets/aiotel_project2.png"
 import "@/app/homePage/themes.css";
 import Link from "next/link";
+import KarmminProject from "@/app/assets/karmmin_project.png"
+
 // import "@/app/homePage/custom.css";
 // import overlay from "@/"
 const Homepage = () => {
@@ -153,8 +155,8 @@ const Homepage = () => {
                   </p>
                   <a
                     href="#portfolio"
-                    className="go-to-project-btn scroll-to scroll-animation"
-                    data-animation="rotate_up"
+                    className="go-to-project-btn scroll-to "
+                    // data-animation="rotate_up"
                   >
                     <Image src={roundedImage} alt="Rounded Text" />
                     <i className="las la-arrow-down" />
@@ -514,9 +516,44 @@ const Homepage = () => {
                         </div>
                         <div className="projects_see_all">
                           <h2>
-                            <a href="#">AIOTEL - Three js based website</a>
+                            <span className="text-white ">AIOTEL - Three js based website</span>
                           </h2>
-                          <Link className="all_Project" href="/projectsPage"> See all projects</Link>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      className="col-md-12 scroll-animation"
+                      data-animation="fade_from_bottom"
+                    >
+                      <div className="portfolio-item portfolio-full">
+                        <div className="portfolio-item-inner">
+                          <a
+                            href="assets/images/portfolio1.jpg"
+                            data-lightbox="example-1"
+                          >
+                            {/* <img
+                              src="assets/images/portfolio1.jpg"
+                              alt="Portfolio"
+                            /> */}
+                            <Image src={KarmminProject} alt="Featured Project" />
+                          </a>
+                          <ul className="portfolio-categories">
+                            <li>
+                              <a href="#">Next js</a>
+                            </li>
+                            <li>
+                              <a href="#">Three js</a>
+                            </li>
+                            <li>
+                              <a href="#">Tailwind</a>
+                            </li>
+                          </ul>
+                        </div>
+                        <div className="projects_see_all">
+                          <h2>
+                            <span className="text-white ">Karmmin - Edu-tech platform</span>
+                          </h2>
+                          <Link className="all_Project " href="/projectsPage"> See all projects</Link>
                           {/* <a className="all_Project" href="">
                             See all projects
                           </a> */}

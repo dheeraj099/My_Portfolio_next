@@ -31,7 +31,7 @@ a {
   text-align: right;
 }
 ul {
-  list-style: none;
+  /* list-style: none; */
   margin: 0;
   padding: 0;
 }
@@ -755,7 +755,7 @@ main.drake-main {
 }
 .hero-section .hero-content .go-to-project-btn img {
   display: block;
-  animation: rotating 6s infinite linear;
+  /* animation: rotating 6s infinite linear; */
 }
 .hero-section .hero-content .go-to-project-btn i {
   position: absolute;
@@ -2016,8 +2016,8 @@ body .body-overlay {
 }
 
 .resume-exp-desc {
-  margin-left: 3rem;
-  list-style-type: disc;
+  list-style-type: disc !important;
+  
 }
 .projects_see_all{
   display: flex;

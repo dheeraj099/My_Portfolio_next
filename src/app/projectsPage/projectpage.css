@@ -1,4 +1,4 @@
-.card {
+.projectcard {
     
     min-height: 254px;
     border-radius: 30px;
@@ -77,4 +77,20 @@
       left: 100%;
     }
   }
-  
+  /* #overlay_video{
+    opacity: 0.2 !important;
+    animation: fadeIn 20s ease-in forwards !important; /
+  }
+  .body-overlay {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+  }
+  .projectPageWrapper{
+    z-index: 2;
+    background: transparent !important;
+  } */
