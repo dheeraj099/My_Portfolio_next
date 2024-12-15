@@ -1,22 +1,20 @@
 "use client";
-import React from "react";
-import "@/app/homePage/homepage.css";
-import profile_picture from "@/app/assets/me_batcheditor_fotor.png";
-import Image from "next/image";
-import LindeinIcon from "@/app/assets/LinkedIn_icon.svg.png";
-import roundedImage from "@/app/assets/round-text.png";
-import "bootstrap/dist/css/bootstrap.min.css";
-import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import Htmlimage from "@/app/assets/HTML5_logo_black.png";
 import JavascriptImage from "@/app/assets/JavaScript-logo2.png";
+import KarmminProject from "@/app/assets/K_Project.png";
+import LindeinIcon from "@/app/assets/LinkedIn_icon.svg.png";
 import ReactImage from "@/app/assets/React-icon.2svg.png";
-import NextJs from "@/app/assets/nextjsLogo.png"
-import "line-awesome/dist/line-awesome/css/line-awesome.css";
-import { motion } from "framer-motion"; // Import motion from framer-motion
-import AiotelProject from "@/app/assets/aiotel_project2.png"
+import AiotelProject from "@/app/assets/aiotel_project2.png";
+import profile_picture from "@/app/assets/me_batcheditor_fotor.png";
+import NextJs from "@/app/assets/nextjsLogo.png";
+import roundedImage from "@/app/assets/round-text.png";
+import "@/app/homePage/homepage.css";
 import "@/app/homePage/themes.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { motion } from "framer-motion"; // Import motion from framer-motion
+import "line-awesome/dist/line-awesome/css/line-awesome.css";
+import Image from "next/image";
 import Link from "next/link";
-import KarmminProject from "@/app/assets/karmmin_project.png"
 
 // import "@/app/homePage/custom.css";
 // import overlay from "@/"
@@ -535,7 +533,7 @@ const Homepage = () => {
                               src="assets/images/portfolio1.jpg"
                               alt="Portfolio"
                             /> */}
-                            <Image src={KarmminProject} alt="Featured Project" />
+                            <Image src={KarmminProject} alt="Karmmin Project" />
                           </a>
                           <ul className="portfolio-categories">
                             <li>
