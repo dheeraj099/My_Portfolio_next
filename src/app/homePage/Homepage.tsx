@@ -15,7 +15,7 @@ import { motion } from "framer-motion"; // Import motion from framer-motion
 import "line-awesome/dist/line-awesome/css/line-awesome.css";
 import Image from "next/image";
 import Link from "next/link";
-
+import {supabase} from "../../../supabase"
 // import "@/app/homePage/custom.css";
 // import overlay from "@/"
 const Homepage = () => {
@@ -551,7 +551,7 @@ const Homepage = () => {
                           <h2>
                             <span className="text-white ">Karmmin - Edu-tech platform</span>
                           </h2>
-                          <Link className="all_Project " href="/projectsPage"> See all projects</Link>
+                          <Link className="all_Project " href="/projects"> See all projects</Link>
                           {/* <a className="all_Project" href="">
                             See all projects
                           </a> */}
