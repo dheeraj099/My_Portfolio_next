@@ -100,7 +100,7 @@ const page = () => {
                 </button>
               </div>
             </div>
-            <div className="projectcard flex flex-col cursor-pointer ">
+            <div className="projectcard flex flex-col cursor-pointer " onClick={()=>handleProject("TwinPad")}>
               {/* <img
                 className="rounded-[30px] px-3 pt-3"
                 src="https://images.pexels.com/photos/17805369/pexels-photo-17805369/free-photo-of-a-mountain-range-with-a-lake-in-the-middle.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
@@ -123,7 +123,7 @@ const page = () => {
                 </button>
               </div>
             </div>
-            <div className="projectcard flex flex-col cursor-pointer ">
+            <div className=" projectcard flex flex-col cursor-pointer ">
               <img
                 className="rounded-[30px] px-3 pt-3"
                 src="https://images.pexels.com/photos/17805369/pexels-photo-17805369/free-photo-of-a-mountain-range-with-a-lake-in-the-middle.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
