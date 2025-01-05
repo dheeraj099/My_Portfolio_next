@@ -22,7 +22,6 @@ const page = () => {
   const router = useRouter(); 
 
   const handleProject = (projectName: string) => {
-    console.log("projectName::", projectName);
   
     
     router.push(`/projects/${projectName}`); // Redirect dynamically

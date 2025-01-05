@@ -36,7 +36,6 @@ const contactPage = () => {
         setResponse(true);
       }
       const data = await response.json();
-      console.log("data:", data);
     } catch (error) {
       //   console.error("Error:", error);
       //   alert("Error sending message");

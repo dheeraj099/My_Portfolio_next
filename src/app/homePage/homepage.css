@@ -2029,7 +2029,9 @@ body .body-overlay {
   z-index: 999;
 }
 
-
+.icon-menu {
+  display: none;
+}
 @media (max-width: 2000px) {
   .left-sidebar {
       max-width: 400px;
@@ -2153,9 +2155,20 @@ body .body-overlay {
       font-size: 52px;
   }
 }
+.menu {
+ opacity: 0;
+}
 
+/* Show the menu on screens larger than tablet size */
+@media (min-width: 768px) {
+  .menu {
+    opacity: 1;
+  }
+}
 @media (max-width: 767px) {
+
   .icon-menu {
+    display: flex;
       right: 30px;
       top: 30px;
   }

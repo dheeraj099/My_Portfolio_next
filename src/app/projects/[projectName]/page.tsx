@@ -143,10 +143,8 @@ const page = () => {
   const [isFirstSlide, setIsFirstSlide] = useState(true); // Track if it's the first slide
   const [isLastSlide, setIsLastSlide] = useState(false); // Track if it's the last slide
 
-  console.log("snapshots::", projectData?.snapshots);
   const handleSlideChange = () => {
     if (swiperRef) {
-      console.log("swiperRef.realIndex:::", swiperRef.realIndex);
       const isAtFirstSlide = swiperRef.realIndex === 0; // Check if the current slide is the first one
       const isAtLastSlide =
   swiperRef.realIndex === (projectData?.snapshots ? projectData.snapshots.length : 0) - 1;

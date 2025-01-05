@@ -12,10 +12,6 @@ app.use(cors()); // For handling CORS issues
 app.post("/send-email", (req, res) => {
   const { name, email, message } = req.body;
 
-  console.log("name:",name)
-  console.log("email:",email)
-  console.log("message:",message)
-
 
   const transporter = nodemailer.createTransport({
     service: 'gmail',  // Use 'gmail' for Gmail or other services like 'smtp.mailtrap.io'
@@ -40,10 +36,8 @@ app.post("/send-email", (req, res) => {
 
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
-      console.log("Error:", error);
            res.re('Error sending email');
     } else {
-      console.log("Email sent:", info.response);
       res.send("Email sent successfully");
     }
   });
@@ -55,7 +49,3 @@ const httpServer = http.createServer(app);
 httpServer.listen(3001, () => {
   console.log("HTTP Server running on port 3001");
 });
-
-// httpsServer.listen(3001, () => {
-//   console.log("HTTPS Server running on port 3001");
-// });

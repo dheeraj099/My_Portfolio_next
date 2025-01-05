@@ -15,15 +15,116 @@ import { motion } from "framer-motion"; // Import motion from framer-motion
 import "line-awesome/dist/line-awesome/css/line-awesome.css";
 import Image from "next/image";
 import Link from "next/link";
-import {supabase} from "../../../supabase"
+import { supabase } from "../../../supabase";
+import { useEffect, useRef, useState } from "react";
 // import "@/app/homePage/custom.css";
 // import overlay from "@/"
 const Homepage = () => {
+  const [isSidebarActive, setIsSidebarActive] = useState(false);
+  const sidebarRef = useRef<HTMLDivElement | null>(null);
+  const handleMenuClick = () => {
+    setIsSidebarActive(true);
+  };
+
+  const handleOutsideClick = (event: MouseEvent) => {
+    if ((event.target as HTMLElement).classList.contains("overlay")) {
+      setIsSidebarActive(false); // Close sidebar
+    } 
+};
+
+  useEffect(() => {
+    if (isSidebarActive) {
+      document.addEventListener("mousedown", handleOutsideClick);
+    } else {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick); // Cleanup
+    };
+  }, [isSidebarActive]);
   return (
     <div className="home1-page">
       <video id="overlay_video" className="body-overlay" muted autoPlay loop>
         <source src="/videoTrial2.mp4" type="video/mp4" />
       </video>
+      <span className="icon-menu" onClick={handleMenuClick}>
+        <span className="bar"></span>
+        <span className="bar"></span>
+      </span>
+
+      {/* START - Hamburger menu  */}
+      <div
+        ref={sidebarRef}
+        className={`responsive-sidebar-menu ${isSidebarActive ? "active" : ""}`}
+      >
+        <div className="overlay"></div>
+        <div className="sidebar-menu-inner">
+          <div className="menu-wrap">
+            <p>Menu</p>
+            <ul className="menu scroll-nav-responsive d-flex">
+              <li>
+                <a className="scroll-to" href="#home">
+                  <i className="las la-home"></i> <span>Home</span>
+                </a>
+              </li>
+              <li>
+                <a className="scroll-to" href="#about">
+                  <i className="lar la-user"></i> <span>About</span>
+                </a>
+              </li>
+              <li>
+                <a className="scroll-to" href="#resume">
+                  <i className="las la-briefcase"></i> <span>Resume</span>
+                </a>
+              </li>
+              <li>
+                <a className="scroll-to" href="#skills">
+                  <i className="las la-shapes"></i> <span>Skills</span>
+                </a>
+              </li>
+              <li>
+                <a className="scroll-to" href="#portfolio">
+                  <i className="las la-grip-vertical"></i>{" "}
+                  <span>Portfolios</span>
+                </a>
+              </li>
+              {/* <li>
+                        <a className="scroll-to" href="#testimonial">
+                            <i className="lar la-comment"></i> <span>Testimonial</span>
+                        </a>
+                    </li> */}
+              {/* <li>
+                        <a className="scroll-to" href="#contact">
+                            <i className="las la-envelope"></i> <span>Contact</span>
+                        </a>
+                    </li> */}
+            </ul>
+          </div>
+
+          {/* <div className="sidebar-social">
+            <p>Social</p>
+            <ul className="social-links d-flex align-items-center">
+              <li>
+                <a href="#">
+                  <i className="lab la-twitter"></i>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i className="lab la-dribbble"></i>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i className="lab la-instagram"></i>
+                </a>
+              </li>
+            </ul>
+          </div> */}
+        </div>
+      </div>
+      {/* END - Hamburger menu  */}
+
       <ul className="menu scroll-nav d-flex">
         <li>
           <a className="scroll-to" href="#home">
@@ -62,10 +163,15 @@ const Homepage = () => {
           src="assets/images/me_batcheditor_fotor.png"
           alt="Me"
         /> */}
-        <Image src={profile_picture} alt="Me" />
+        <Image
+          src={profile_picture}
+          alt="Me"
+          className="me"
+          layout="responsive"
+        />
         <h5 className="email">dheerajpgirsh09@gmail.com</h5>
         <h5 className="address">Base in Bengaluru, KA</h5>
-        {/* <p class="copyright">&copy; 2022 Drake. All Rights Reserved</p> */}
+        {/* <p className="copyright">&copy; 2022 Drake. All Rights Reserved</p> */}
         <ul className="d-flex align-items-center flex-wrap justify-content-center">
           <li>
             <a href="https://www.linkedin.com/in/dheeraj-p-girish/">
@@ -88,40 +194,40 @@ const Homepage = () => {
           <div id="smooth-content">
             <div className="left-sidebar">
               <div className="sidebar-header d-flex align-items-center justify-content-between">
-                <img src="assets/images/logo.png" alt="Logo" />
-                <span className="designation">
+                {/* <img src="assets/images/logo.png" alt="Logo" /> */}
+                {/* <span className="designation">
                   Framer Designer &amp; Developer
-                </span>
+                </span> */}
               </div>
-              <img className="me" src="assets/images/me.jpg" alt="Me" />
-              <h2 className="email">hello@drake.design</h2>
-              <h2 className="address">Base in Los Angeles, CA</h2>
-              <p className="copyright">© 2022 Drake. All Rights Reserved</p>
-              <ul className="social-profile d-flex align-items-center flex-wrap justify-content-center">
+              {/* <img className="me" src="assets/images/me.jpg" alt="Me" /> */}
+              <Image
+                src={profile_picture}
+                alt="Me"
+                className="me"
+                layout="responsive"
+              />
+              <h2 className="email">dheerajpgirsh09@gmail.com</h2>
+              <h2 className="address">Base in Bengaluru, KA</h2>
+              {/* <p className="copyright">© 2022 Drake. All Rights Reserved</p> */}
+              <ul className="d-flex align-items-center flex-wrap justify-content-center">
                 <li>
-                  <a href="#">
-                    <i className="lab la-twitter" />
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <i className="lab la-dribbble" />
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <i className="lab la-instagram" />
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <i className="lab la-github" />
+                  <a href="https://www.linkedin.com/in/dheeraj-p-girish/">
+                    {/* <img
+                src="assets/images/LinkedIn_icon.svg.png "
+                style={{ width: 25, height: 25 }}
+                alt="React"
+              /> */}
+                    <Image
+                      src={LindeinIcon}
+                      alt="React"
+                      style={{ width: 25, height: 25 }}
+                    />
                   </a>
                 </li>
               </ul>
-              <a href="#" className="theme-btn">
+              {/* <a href="#" className="theme-btn">
                 <i className="las la-envelope" /> Hire Me!
-              </a>
+              </a> */}
             </div>
             <section
               className="hero-section page-section scroll-to-page"
@@ -385,10 +491,13 @@ const Homepage = () => {
                       data-animation="fade_from_right"
                     >
                       <div className="skill">
-                        <motion.div className="skill-inner" whileHover={{
-                          backgroundColor: "#983e26",
-                          transition: { duration: 0.3 }, // Smooth transition
-                        }}>
+                        <motion.div
+                          className="skill-inner"
+                          whileHover={{
+                            backgroundColor: "#983e26",
+                            transition: { duration: 0.3 }, // Smooth transition
+                          }}
+                        >
                           <Image src={Htmlimage} alt="React" />
                         </motion.div>
                         <p className="name">HTML</p>
@@ -399,10 +508,13 @@ const Homepage = () => {
                       data-animation="fade_from_left"
                     >
                       <div className="skill">
-                        <motion.div className="skill-inner" whileHover={{
-                          backgroundColor: "#8f823d",
-                          transition: { duration: 0.3 }, // Smooth transition
-                        }}>
+                        <motion.div
+                          className="skill-inner"
+                          whileHover={{
+                            backgroundColor: "#8f823d",
+                            transition: { duration: 0.3 }, // Smooth transition
+                          }}
+                        >
                           <Image src={JavascriptImage} alt="Javascript" />
                         </motion.div>
                         <p className="name">JavaScript</p>
@@ -413,10 +525,13 @@ const Homepage = () => {
                       data-animation="fade_from_left"
                     >
                       <div className="skill">
-                        <motion.div className="skill-inner" whileHover={{
-                          backgroundColor: "#377a9c",
-                          transition: { duration: 0.3 }, // Smooth transition
-                        }}>
+                        <motion.div
+                          className="skill-inner"
+                          whileHover={{
+                            backgroundColor: "#377a9c",
+                            transition: { duration: 0.3 }, // Smooth transition
+                          }}
+                        >
                           <Image src={ReactImage} alt="React" />
                         </motion.div>
                         <p className="name">React.js</p>
@@ -427,13 +542,15 @@ const Homepage = () => {
                       data-animation="fade_from_bottom"
                     >
                       <div className="skill">
-                        <motion.div className="skill-inner"
+                        <motion.div
+                          className="skill-inner"
                           whileHover={{
                             backgroundColor: "#377a9c",
                             transition: { duration: 0.3 }, // Smooth transition
-                          }}>
+                          }}
+                        >
                           <Image src={ReactImage} alt="React Native" />
-                          {/* <h1 class="percent">85%</h1> */}
+                          {/* <h1 className="percent">85%</h1> */}
                         </motion.div>
                         <p className="name">React Native</p>
                       </div>
@@ -443,13 +560,14 @@ const Homepage = () => {
                       data-animation="fade_from_top"
                     >
                       <div className="skill">
-                        <motion.div className="skill-inner"
+                        <motion.div
+                          className="skill-inner"
                           whileHover={{
                             backgroundColor: "#aeadb9",
                             transition: { duration: 0.3 }, // Smooth transition
-                          }}>
+                          }}
+                        >
                           <Image src={NextJs} alt="Next js" />
-
                         </motion.div>
                         <p className="name">Next</p>
                       </div>
@@ -464,7 +582,9 @@ const Homepage = () => {
             >
               <div className="custom-container">
                 <div className="portfolio-content content-width">
-                  <motion.div className="section-header" initial={{ opacity: 0, y: 100 }} // Initial state
+                  <motion.div
+                    className="section-header"
+                    initial={{ opacity: 0, y: 100 }} // Initial state
                     whileInView={{ opacity: 1, y: 0, zIndex: 1 }} // State when in view
                     transition={{ duration: 0.7 }} // Transition duration
                     viewport={{ once: true }} // Animation will trigger every time
@@ -514,7 +634,9 @@ const Homepage = () => {
                         </div>
                         <div className="projects_see_all">
                           <h2>
-                            <span className="text-white ">AIOTEL - Three js based website</span>
+                            <span className="text-white ">
+                              AIOTEL - Three js based website
+                            </span>
                           </h2>
                         </div>
                       </div>
@@ -549,13 +671,14 @@ const Homepage = () => {
                         </div>
                         <div className="projects_see_all">
                           <h2>
-                            <span className="text-white ">Karmmin - Edu-tech platform</span>
+                            <span className="text-white ">
+                              Karmmin - Edu-tech platform
+                            </span>
                           </h2>
-                          <Link className="all_Project " href="/projects"> See all projects</Link>
-                          {/* <a className="all_Project" href="">
+                          <Link className="all_Project " href="/projects">
+                            {" "}
                             See all projects
-                          </a> */}
-
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -563,100 +686,10 @@ const Homepage = () => {
                 </div>
               </div>
             </section>
-            {/* <section class="contact-area page-section scroll-content" id="contact">
-              <div class="custom-container">
-                  <div class="contact-content content-width">
-                      <div class="section-header">
-                          <h4 class="subtitle scroll-animation" data-animation="fade_from_bottom">
-                              <i class="las la-dollar-sign"></i> contact
-                          </h4>
-                          <h1 class="scroll-animation" data-animation="fade_from_bottom">Let's Work
-                              <span>Together!</span>
-                          </h1>
-                      </div>
-                      <h3 class="scroll-animation" data-animation="fade_from_bottom">hello@drake.design</h3>
-                      <p id="required-msg">* Marked fields are required to fill.</p>
-
-                      <form class="contact-form scroll-animation" data-animation="fade_from_bottom" method="POST"
-                          action="https://wpriverthemes.com/HTML/drake/mailer.php">
-                          <div class="alert alert-success messenger-box-contact__msg" style="display: none"
-                              role="alert">
-                              Your message was sent successfully.
-                          </div>
-                          <div class="row">
-                              <div class="col-md-6">
-                                  <div class="input-group">
-                                      <label for="full-name">full Name <sup>*</sup></label>
-                                      <input type="text" name="full-name" id="full-name"
-                                          placeholder="Your Full Name">
-                                  </div>
-                              </div>
-                              <div class="col-md-6">
-                                  <div class="input-group">
-                                      <label for="email">Email <sup>*</sup></label>
-                                      <input type="email" name="email" id="email" placeholder="Your email adress">
-                                  </div>
-                              </div>
-                              <div class="col-md-6">
-                                  <div class="input-group">
-                                      <label for="phone-number">phone <span>(optional)</span></label>
-                                      <input type="text" name="phone-number" id="phone-number"
-                                          placeholder="Your number phone">
-                                  </div>
-                              </div>
-                              <div class="col-md-6">
-                                  <div class="input-group">
-                                      <label for="subject">subject <sup>*</sup></label>
-                                      <select name="subject" id="subject">
-                                          <option value="">Select a subject</option>
-                                          <option value="subject1">Subject 1</option>
-                                          <option value="subject2">Subject 2</option>
-                                          <option value="subject3">Subject 3</option>
-                                      </select>
-                                  </div>
-                              </div>
-                              <div class="col-md-12">
-                                  <div class="input-group">
-                                      <label for="budget">your budget <span>(optional)</span></label>
-                                      <input type="number" name="budget" id="budget"
-                                          placeholder="A range budget for your project">
-                                  </div>
-                              </div>
-                              <div class="col-md-12">
-                                  <div class="input-group">
-                                      <label for="message">message</label>
-                                      <textarea name="message" id="message"
-                                          placeholder="Wrire your message here ..."></textarea>
-                                  </div>
-                              </div>
-                              <div class="col-md-12">
-                                  <div class="input-group upload-attachment">
-                                      <div>
-                                          <label for="upload-attachment">
-                                              <i class="las la-cloud-upload-alt"></i> add an attachment
-                                              <input type="file" name="file" id="upload-attachment">
-                                          </label>
-
-                                      </div>
-
-                                  </div>
-                              </div>
-                              <div class="col-md-12">
-                                  <div class="input-group submit-btn-wrap">
-                                      <button class="theme-btn" name="submit" type="submit" id="submit-form">send
-                                          message</button>
-                                  </div>
-                              </div>
-                          </div>
-                      </form>
-
-                  </div>
-              </div>
-          </section> */}
           </div>
-        </div >
-      </main >
-    </div >
+        </div>
+      </main>
+    </div>
   );
 };
 
