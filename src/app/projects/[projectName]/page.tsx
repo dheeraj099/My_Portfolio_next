@@ -1,16 +1,14 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { useParams } from "next/navigation";
-import { supabase } from "../../../../supabase";
 import Header from "@/app/common/Header";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import { Navigation, Pagination } from "swiper/modules";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import { useParams } from "next/navigation";
+import { useEffect, useState } from "react";
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
+import "swiper/css";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { supabase } from "../../../../supabase";
 interface Project {
   id: number;
   title: string;
@@ -18,10 +16,11 @@ interface Project {
   description?: string | null;
   about?: string | null;
   technologies?: Record<string, string>;
-  features?: string | null;
-  contributions?: string | null;
+  features?: string[] | null;  // Array of strings (text[])
+  contributions?: Record<string, any>[];
   live?: string | null;
   images?: Record<any, any>;
+  snapshots?: Record<string, any>[];
 }
 const page = () => {
   const { projectName } = useParams();
@@ -77,7 +76,7 @@ const page = () => {
         "This slide is 100% editable. Adapt it to your needs and capture your audience's attention.",
     },
   ];
-  const getColor = (index) => {
+  const getColor = (index:any) => {
     const colors = [
       "bg-blue-500",
       "bg-red-500",
@@ -95,7 +94,7 @@ const page = () => {
   ];
 
   const [currentSlide, setCurrentSlide] = useState(0);
-  const showSlide = (index) => {
+  const showSlide = (index:any) => {
     if (index < 0) {
       setCurrentSlide(snapshots.length - 1);
     } else if (index >= snapshots.length) {
@@ -150,7 +149,8 @@ const page = () => {
       console.log("swiperRef.realIndex:::", swiperRef.realIndex);
       const isAtFirstSlide = swiperRef.realIndex === 0; // Check if the current slide is the first one
       const isAtLastSlide =
-        swiperRef.realIndex === projectData?.snapshots.length - 1; // Check if it's the last slide
+  swiperRef.realIndex === (projectData?.snapshots ? projectData.snapshots.length : 0) - 1;
+ // Check if it's the last slide
       setIsFirstSlide(isAtFirstSlide); // Update the state for the first slide
       setIsLastSlide(isAtLastSlide); // Update the state for the last slide
     }
@@ -221,7 +221,7 @@ const page = () => {
             <hr className="border border-white w-[20%]"></hr>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {projectData?.features.map((feature, index) => (
+            {projectData?.features && projectData?.features.map((feature, index) => (
               <div
                 key={index}
                 className="flex flex-col gap-7 items-center justify-center py-4 px-2 rounded-2xl bg-white"
@@ -265,7 +265,7 @@ const page = () => {
               <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-gray-300"></div>
 
               {/* <!-- Each Row --> */}
-              {projectData?.contributions.map((item, index) => (
+              {projectData?.contributions && projectData?.contributions.map((item, index) => (
                 <div key={index} className="flex items-center space-x-4">
                   {/* <!-- Number Circle --> */}
                   <div
@@ -335,7 +335,7 @@ const page = () => {
               slidesPerView={1}
               className="mySwiper"
             >
-              {projectData?.snapshots.map((item, index) => (
+              {projectData?.snapshots && projectData?.snapshots.map((item, index) => (
                 <SwiperSlide key={index} className="swiper-slide">
                   {/* Render description and media */}
                   <div className="text-center mb-4">
