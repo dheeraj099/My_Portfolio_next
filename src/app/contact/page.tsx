@@ -13,7 +13,7 @@ const contactPage = () => {
     message: "",
   });
 
-  const handleChange = (e) => {
+  const handleChange = (e:any) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
@@ -21,7 +21,7 @@ const contactPage = () => {
     }));
   };
   const [response, setResponse] = useState(false);
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e:any) => {
     e.preventDefault();
 
     try {
