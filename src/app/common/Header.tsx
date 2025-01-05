@@ -5,7 +5,7 @@ import "@/app/projects/projectpage.css";
 const Header = () => {
   const router = useRouter();
   return (
-    <div className="flex px-8 h-12 bg-black justify-between header-shadow z-[99] items-center">
+    <div className="flex px-8 h-12 bg-black justify-between header-shadow z-[99] items-center absolute w-full">
       
         <Button size="small" onClick={() => router.back()} sx={{ margin:"0px", padding:"0px" }}>
           <div className="flex items-center border border-white  rounded-lg px-1 py-1 hover:bg-[#212121]">
@@ -19,10 +19,16 @@ const Header = () => {
         <span className="text-xs font-semibold cursor-pointer text-white" onClick={()=>router.push("/")}> Home </span>
         {/* <span className="text-xs font-semibold cursor-pointer text-white">About</span> */}
         <span className="text-xs font-semibold cursor-pointer text-white" onClick={()=>router.push("/projects")}>Projects</span>
-        <span className="text-xs font-semibold cursor-pointer text-white">Contact</span>
+        <span className="text-xs font-semibold cursor-pointer text-white" onClick={()=>router.push("/contact")}>Contact</span>
       </div>
       <div className=" flex items-center border border-white  rounded-lg h-fit py-1 px-1 cursor-pointer hover:bg-[#212121] ">
-        <span className="text-xs font-semibold p-0 m-0 text-white"> Download CV </span>
+      <a
+        href="/DHEERAJ_P_GIRISH_Software_Engineer.pdf"  // Replace with the correct path to your CV file
+        download="Dheeraj_P_GIRISH_CV.pdf"    // Set the file name for download
+        // className="flex items-center border border-white rounded-lg h-fit py-1 px-1 cursor-pointer hover:bg-[#212121]"
+      >
+        <span className="text-xs font-semibold p-0 m-0 text-white">Download CV</span>
+      </a>
       </div>
     </div>
   );

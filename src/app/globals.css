@@ -19,3 +19,91 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+.space-x-6 > :not([hidden]) ~ :not([hidden]) {
+  margin-left: 0px;
+}
+
+
+
+/* styles/globals.css or styles/Carousel.module.css */
+.carousel-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  max-width: 80%;
+  margin: 0 auto;
+  height: max-content;
+}
+
+.swiper-wrapper {
+  display: flex;
+  align-items: flex-start; /* Align items at the top */
+  justify-content: flex-start; /* Align items to the left */
+}
+.swiper-slide {
+  display: flex;
+  flex-direction: column; /* Stack the desc and media vertically */
+  align-items: center; /* Center the content horizontally */
+  justify-content: center; /* Center the content vertically */
+  text-align: center; /* Ensure the text is centered */
+  padding: 20px; /* Add some padding around the content */
+}
+.swiper-slide img,
+.swiper-slide video {
+  width: 100%;
+  object-fit: contain; /* Prevent cropping */
+}
+.swiper-button-prev, .swiper-button-next {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 10; /* Ensure buttons are above the carousel */
+}
+
+.swiper-button-prev {
+  margin-right: 10px; /* Space between the button and the carousel */
+}
+
+.swiper-button-next {
+  margin-left: 10px; /* Space between the button and the carousel */
+}
+
+
+/* From Uiverse.io by adamgiebl */ 
+.livebuttoncontainer button {
+  display: flex;
+  align-items: center;
+  font-family: inherit;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 17px;
+  padding: 0.8em 1.3em 0.8em 0.9em;
+  color: white;
+  background: #ad5389;
+  background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+  border: none;
+  letter-spacing: 0.05em;
+  border-radius: 16px;
+}
+
+.livebuttoncontainer button svg {
+  margin-right: 3px;
+  transform: rotate(30deg);
+  transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.livebuttoncontainer button span {
+  transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.livebuttoncontainer button:hover svg {
+  transform: translateX(5px) rotate(90deg);
+}
+
+.livebuttoncontainer button:hover span {
+  transform: translateX(7px);
+}
