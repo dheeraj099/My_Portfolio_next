@@ -308,7 +308,10 @@ const page = () => {
                       fill="currentColor"
                     ></path>
                   </svg>
+                  <a href={`${projectData?.live}`}>
+
                   <span>Live</span>
+                  </a>
                 </button>
               </div>
             </div>

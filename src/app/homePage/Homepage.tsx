@@ -174,7 +174,7 @@ const Homepage = () => {
           layout="responsive"
         />
         <h5 className="email">dheerajpgirsh09@gmail.com</h5>
-        <h5 className="address">Base in Bengaluru, KA</h5>
+        <h5 className="address">Bengaluru, Karnataka, India</h5>
         {/* <p className="copyright">&copy; 2022 Drake. All Rights Reserved</p> */}
         <ul className="d-flex align-items-center flex-wrap justify-content-center">
           <li>
@@ -211,7 +211,7 @@ const Homepage = () => {
                 layout="responsive"
               />
               <h2 className="email">dheerajpgirsh09@gmail.com</h2>
-              <h2 className="address">Base in Bengaluru, KA</h2>
+              <h2 className="address">Bengaluru, Karnataka, India</h2>
               {/* <p className="copyright">© 2022 Drake. All Rights Reserved</p> */}
               <ul className="d-flex align-items-center flex-wrap justify-content-center">
                 <li>
@@ -250,7 +250,7 @@ const Homepage = () => {
                       className="scroll-animation"
                       data-animation="fade_from_bottom"
                     >
-                      Say Hi from
+                      Hi from
                       <span>Dheeraj</span>, Frontend Developer
                     </h1>
                   </div>

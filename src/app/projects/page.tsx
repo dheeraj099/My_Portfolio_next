@@ -1,16 +1,16 @@
 "use client";
-import "@/app/projects/projectpage.css"
-import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-import { useEffect, useRef, useState } from "react";
+import three_img from "@/app/assets/3dTwin_PR.png";
 import AiotelProject from "@/app/assets/aiotel_project2.png";
 import KarmminProject from "@/app/assets/K_Project.png";
+import thingspad_img from "@/app/assets/ThingsPad_PR.png";
+import Twinvrse_p from "@/app/assets/Twinvrse2.png";
+import statsphereImage from "@/app/assets/statsphereImage.png"
+import "@/app/projects/projectpage.css";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import Image from "next/image";
-import Twinvrse_p from "@/app/assets/Twinvrse2.png"
-import thingspad_img from "@/app/assets/ThingsPad_PR.png"
-import three_img from "@/app/assets/3dTwin_PR.png"
-import Header from "../common/Header";
 import { useRouter } from "next/navigation";
-import {supabase} from "../../../supabase"
+import { useRef } from "react";
+import Header from "../common/Header";
 const page = () => {
   const scrollTargetRef = useRef<HTMLDivElement>(null);
 
@@ -122,14 +122,15 @@ const page = () => {
                 </button>
               </div>
             </div>
-            <div className=" projectcard flex flex-col cursor-pointer ">
-              <img
+            <div className=" projectcard flex flex-col cursor-pointer " onClick={()=>handleProject("Statsphere")}>
+              {/* <img
                 className="rounded-[30px] px-3 pt-3"
                 src="https://images.pexels.com/photos/17805369/pexels-photo-17805369/free-photo-of-a-mountain-range-with-a-lake-in-the-middle.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-              />
+              /> */}
+              <Image src={statsphereImage} alt="statsphere project" className="rounded-[30px] px-3 pt-3"/>
               <div className="flex justify-between mt-2 items-center px-4">
                 <span className=" text-center font-semibold text-white ">
-                  Project 4
+                Statsphere - GenAI Analysis Platform
                 </span>
 
                 <button className="button">
