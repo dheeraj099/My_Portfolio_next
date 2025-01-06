@@ -125,7 +125,8 @@ const Homepage = () => {
       </div>
       {/* END - Hamburger menu  */}
 
-      <ul className="menu scroll-nav d-flex">
+<div className="desktopMenu">
+      <ul className="menu scroll-nav d-flex   ">
         <li>
           <a className="scroll-to" href="#home">
             <span>Home</span> <i className="las la-home" />
@@ -153,7 +154,10 @@ const Homepage = () => {
           </a>
         </li>
       </ul>
-      <div className="left-sidebar">
+      </div>
+
+
+      <div className="left-sidebar mt-0 sm:mt-5">
         <div className="sidebar-header d-flex w-full align-items-center justify-content-center">
           <span className="name">Dheeraj P Girish</span>
           <span className="designation2">Software Engineer</span>
@@ -611,7 +615,7 @@ const Homepage = () => {
                       <div className="portfolio-item portfolio-full">
                         <div className="portfolio-item-inner">
                           <a
-                            href="assets/images/portfolio1.jpg"
+                            // href="assets/images/portfolio1.jpg"
                             data-lightbox="example-1"
                           >
                             {/* <img
@@ -648,7 +652,7 @@ const Homepage = () => {
                       <div className="portfolio-item portfolio-full">
                         <div className="portfolio-item-inner">
                           <a
-                            href="assets/images/portfolio1.jpg"
+                            // href="assets/images/portfolio1.jpg"
                             data-lightbox="example-1"
                           >
                             {/* <img

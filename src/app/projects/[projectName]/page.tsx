@@ -16,7 +16,7 @@ interface Project {
   description?: string | null;
   about?: string | null;
   technologies?: Record<string, string>;
-  features?: string[] | null;  // Array of strings (text[])
+  features?: string[] | null; // Array of strings (text[])
   contributions?: Record<string, any>[];
   live?: string | null;
   images?: Record<any, any>;
@@ -76,7 +76,7 @@ const page = () => {
         "This slide is 100% editable. Adapt it to your needs and capture your audience's attention.",
     },
   ];
-  const getColor = (index:any) => {
+  const getColor = (index: any) => {
     const colors = [
       "bg-blue-500",
       "bg-red-500",
@@ -94,7 +94,7 @@ const page = () => {
   ];
 
   const [currentSlide, setCurrentSlide] = useState(0);
-  const showSlide = (index:any) => {
+  const showSlide = (index: any) => {
     if (index < 0) {
       setCurrentSlide(snapshots.length - 1);
     } else if (index >= snapshots.length) {
@@ -147,31 +147,33 @@ const page = () => {
     if (swiperRef) {
       const isAtFirstSlide = swiperRef.realIndex === 0; // Check if the current slide is the first one
       const isAtLastSlide =
-  swiperRef.realIndex === (projectData?.snapshots ? projectData.snapshots.length : 0) - 1;
- // Check if it's the last slide
+        swiperRef.realIndex ===
+        (projectData?.snapshots ? projectData.snapshots.length : 0) - 1;
+      // Check if it's the last slide
       setIsFirstSlide(isAtFirstSlide); // Update the state for the first slide
       setIsLastSlide(isAtLastSlide); // Update the state for the last slide
     }
   };
 
   return (
-    <div className="flex flex-col w-full">
+    <div className="flex flex-col flex-auto w-full">
       <Header />
-      <div className="flex flex-col h-screen w-full overflow-y-hidden">
-        <div className="absolute bg-black/70 w-full h-screen flex "></div>
+      <div className="flex flex-col items-center justify-center sm:items-start sm:justify-start min-h-[calc(100vh-7rem)] sm:h-screen  w-full overflow-y-hidden">
+        <div className="absolute bg-black/70 w-full min-h-[calc(100vh-7rem)] sm:h-screen flex "></div>
         <img src={projectData?.heroSection_image} />
         <div className="flex flex-col gap-2 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 ">
-          <span className="text-7xl text-white text-center font-medium uppercase">
+          <span className="text-2xl  sm:text-7xl text-white text-center font-medium uppercase">
             {projectData?.title}
           </span>
-          <span className="text-5xl text-white font-light">
+          <span className="text-2xl sm:text-5xl text-white font-light">
             {projectData?.description}
           </span>
         </div>
       </div>
-      <div className="flex flex-col h-screen w-full justify-center px-24">
-        <div className="flex w-full gap-14 items-center">
-          <div className="flex flex-col border-l border-white h-fit w-[35%] ml-6 pl-6 py-8">
+
+      <div className="flex flex-col h-screen w-full justify-center px-10 sm:px-24">
+        <div className="flex flex-col sm:flex-row w-full gap-14 items-center">
+          <div className="flex flex-col border-l border-white h-fit w-full sm:w-[35%] ml-0 sm:ml-6 pl-6 py-8">
             <span className="text-sm">ABOUT</span>
             <span className="text-2xl mt-8">{projectData?.description}</span>
             <span className="text-base mt-24">{projectData?.about}</span>
@@ -186,9 +188,9 @@ const page = () => {
         </div>
       </div>
 
-      <div className="flex flex-col h-screen w-full justify-center ">
-        <div className="flex w-full gap-14 items-center">
-          <div className="flex flex-col border-l border-white h-fit w-[65%]  justify-start items-start">
+      <div className="flex flex-col h-screen w-full justify-center px-10 sm:px-0">
+        <div className="flex flex-col sm:flex-row w-full  items-center">
+          <div className="flex flex-col order-2 sm:order-1  ml-0 sm:ml-6 pl-6 border-white h-fit  w-full sm:w-[65%]  justify-start items-start">
             <img
               src={projectData?.images?.about || null}
               alt="Project about"
@@ -196,7 +198,7 @@ const page = () => {
             />
           </div>
 
-          <div className="flex w-[35%] flex-col border-r border-white h-fit mr-32 pr-6 py-8">
+          <div className="flex w-full order-1 ml-0 sm:ml-6 pl-6 sm:order-2 sm:w-[35%] flex-col border-l  border-white sm:border-l-0 sm:border-r sm:border-white h-fit mr-0 sm:mr-32 pr-6 py-8 ">
             <span className="text-sm">TECHNOLOGIES</span>
             <div className="grid grid-cols-2 gap-4 mt-8">
               <div className="bg-white text-white p-4">
@@ -205,38 +207,37 @@ const page = () => {
               <div className="bg-white text-white p-4 flex items-center justify-center">
                 <img src={projectData?.images?.technologies?.tailwind} />
               </div>
-              {/* <div className="bg-red-500 text-white p-4">Element 3</div>
-              <div className="bg-yellow-500 text-white p-4">Element 4</div> */}
             </div>
           </div>
         </div>
       </div>
 
-      <div className="flex flex-col h-screen w-full justify-center px-24">
+      <div className="flex flex-col min-h-screen lg:h-full sm:h-screen w-full justify-center px-10 sm:px-24 ">
         <div className="flex flex-col w-full gap-14 ">
-          <div className="flex flex-col gap-3 items-center justify-centerh-fit w-full ml-6 pl-6 py-8">
+          <div className="flex flex-col gap-3 items-center justify-center h-fit w-full ml-0 sm:ml-6 pl-6 py-8">
             <span className="text-sm text-center">FEATURES</span>
-            <hr className="border border-white w-[20%]"></hr>
+            <hr className="border border-white w-[80%] sm:w-[20%]"></hr>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {projectData?.features && projectData?.features.map((feature, index) => (
-              <div
-                key={index}
-                className="flex flex-col gap-7 items-center justify-center py-4 px-2 rounded-2xl bg-white"
-              >
-                <div className="flex w-12 h-12  bg-[#474646] rounded-full items-center justify-center">
-                  <span className="font-bold text-2xl">{index + 1}</span>
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {projectData?.features &&
+              projectData?.features.map((feature, index) => (
+                <div
+                  key={index}
+                  className="flex flex-col gap-7 items-center justify-center py-4 px-2 rounded-2xl bg-white"
+                >
+                  <div className="flex w-12 h-12  bg-[#474646] rounded-full items-center justify-center">
+                    <span className="font-bold text-2xl">{index + 1}</span>
+                  </div>
+                  <span className="text-black text-center font-medium">
+                    {feature}
+                  </span>
                 </div>
-                <span className="text-black text-center font-medium">
-                  {feature}
-                </span>
-              </div>
-            ))}
+              ))}
           </div>
         </div>
       </div>
 
-      <div className="flex flex-col min-h-screen w-full justify-center px-0">
+      <div className="flex flex-col min-h-screen w-full justify-center px-10 sm:px-0 ">
         <div className="flex flex-col w-full gap-14 ">
           <div className="flex flex-col gap-3 items-center justify-centerh-fit w-full  pl-6 py-8">
             <span className="text-sm text-center">CONTRIBUTIONS</span>
@@ -247,49 +248,50 @@ const page = () => {
 
           <div className="flex items-center space-x-6 relative  ">
             {/* <!-- Left Target Icon --> */}
-            <div className="flex-shrink-0 -ml-[15%] ">
-              <div className="relative w-96 h-96 bg-red-500 rounded-r-full flex items-center justify-center overflow-hidden ">
-                <div className="absolute w-64 h-64 bg-white rounded-r-full"></div>
-                <div className="absolute  w-32 h-32  bg-red-500 rounded-r-full"></div>
+            <div className="sm:flex-shrink-0 sm:-ml-[15%] hidden sm:flex ">
+              <div className="relative w-32 h-32 sm:w-96 sm:h-96 bg-red-500 rounded-r-full flex items-center justify-center overflow-hidden ">
+                <div className="absolute w-20 h-20 sm:w-64 sm:h-64 bg-white rounded-r-full"></div>
+                <div className="absolute w-10 h-10 sm:w-32 sm:h-32  bg-red-500 rounded-r-full"></div>
               </div>
             </div>
 
             {/* <!-- Horizontal Line --> */}
-            <div className="relative w-28 border border-white ml-[50%]"></div>
+            <div className="sm:relative w-14 sm:w-28 sm:border sm:border-white sm:ml-[50%] hidden sm:flex"></div>
 
             {/* <!-- Right Content --> */}
-            <div className="flex flex-col space-y-8 relative ml-[50%] max-w-[65%] ">
+            <div className="flex flex-col space-y-8 relative ml-[50%] max-[30%] sm:max-w-[65%] ">
               {/* <!-- Vertical Line --> */}
               <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-gray-300"></div>
 
               {/* <!-- Each Row --> */}
-              {projectData?.contributions && projectData?.contributions.map((item, index) => (
-                <div key={index} className="flex items-center space-x-4">
-                  {/* <!-- Number Circle --> */}
-                  <div
-                    className={`relative z-10 flex items-center justify-center w-12 h-12 text-white font-bold rounded-full ${getColor(
-                      index
-                    )}`}
-                  >
-                    {item.number}
-                  </div>
-                  {/* <!-- Text --> */}
-                  <div className="flex-1">
-                    <div className="text-lg font-semibold">{item.title}</div>
-                    <div className="text-gray-600 text-sm">
-                      {item.description}
+              {projectData?.contributions &&
+                projectData?.contributions.map((item, index) => (
+                  <div key={index} className="flex items-center space-x-4">
+                    {/* <!-- Number Circle --> */}
+                    <div
+                      className={`relative z-10 flex items-center justify-center w-12 h-12 text-white font-bold rounded-full ${getColor(
+                        index
+                      )}`}
+                    >
+                      {item.number}
+                    </div>
+                    {/* <!-- Text --> */}
+                    <div className="flex-1">
+                      <div className="text-lg font-semibold">{item.title}</div>
+                      <div className="text-gray-600 text-sm">
+                        {item.description}
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
             </div>
           </div>
         </div>
       </div>
 
-      <div className="flex flex-col min-h-screen w-full justify-center px-0 ">
-        <div className="flex flex-col w-full gap-14">
-          <div className="flex flex-col gap-3 items-center justify-center h-fit w-full pl-6 py-8">
+      <div className="flex flex-col min-h-screen w-full justify-center iems-center px-0  ">
+        <div className="flex flex-col w-full gap-7">
+          <div className="flex flex-col gap-3 items-center justify-center h-fit w-full pl-6 py-8 mt-0 sm:mt-8 ">
             <div className="flex gap-6 items-center justify-center">
               <span className="text-sm text-center">SNAPSHOTS</span>
               <div className="livebuttoncontainer flex w-full items-end justify-end">
@@ -310,10 +312,9 @@ const page = () => {
                 </button>
               </div>
             </div>
-            <hr className="border border-white w-[30%]" />
-            
+            <hr className="border border-white sm:w-[30%] w-[80%]" />
           </div>
-          <div className="carousel-container">
+          <div className="carousel-container max-w-[100%] sm:max-w-[80%] ">
             {/* Previous button */}
             <button
               onClick={() => swiperRef?.slidePrev()}
@@ -333,29 +334,30 @@ const page = () => {
               slidesPerView={1}
               className="mySwiper"
             >
-              {projectData?.snapshots && projectData?.snapshots.map((item, index) => (
-                <SwiperSlide key={index} className="swiper-slide">
-                  {/* Render description and media */}
-                  <div className="text-center mb-4">
-                    <p>{item.desc}</p>
-                  </div>
-                  {item.type === "image" ? (
-                    <img
-                      src={item.media}
-                      alt={item.desc}
-                      // className="w-full h-128 object-contain" // Increased height by 2x
-                    />
-                  ) : (
-                    <video
-                      src={item.media}
-                      autoPlay
-                      loop
-                      muted
-                      // className="w-full h-128 object-contain" // Increased height by 2x
-                    />
-                  )}
-                </SwiperSlide>
-              ))}
+              {projectData?.snapshots &&
+                projectData?.snapshots.map((item, index) => (
+                  <SwiperSlide key={index} className="swiper-slide">
+                    {/* Render description and media */}
+                    <div className="text-center mb-4">
+                      <p>{item.desc}</p>
+                    </div>
+                    {item.type === "image" ? (
+                      <img
+                        src={item.media}
+                        alt={item.desc}
+                        // className="w-full h-128 object-contain" // Increased height by 2x
+                      />
+                    ) : (
+                      <video
+                        src={item.media}
+                        autoPlay
+                        loop
+                        muted
+                        // className="w-full h-128 object-contain" // Increased height by 2x
+                      />
+                    )}
+                  </SwiperSlide>
+                ))}
             </Swiper>
 
             {/* Next button */}

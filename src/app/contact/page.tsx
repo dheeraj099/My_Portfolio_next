@@ -13,7 +13,7 @@ const contactPage = () => {
     message: "",
   });
 
-  const handleChange = (e:any) => {
+  const handleChange = (e: any) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
@@ -21,7 +21,7 @@ const contactPage = () => {
     }));
   };
   const [response, setResponse] = useState(false);
-  const handleSubmit = async (e:any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
 
     try {
@@ -52,9 +52,9 @@ const contactPage = () => {
     if (response) {
       setOpen(true); // Open Snackbar when response is available
       setFormData({
-        name: '',
-        email: '',
-        message: '',
+        name: "",
+        email: "",
+        message: "",
       });
 
       const timer = setTimeout(() => {
@@ -70,17 +70,21 @@ const contactPage = () => {
     <div className="flex flex-col bg-black">
       <Header />
 
-      <div className="flex items-center justify-center min-h-screen  w-full px-24 gap-10">
-        <div className="flex flex-col h-full w-1/2 ">
-          <span className="text-8xl font-medium leading-[130px] ">LETS'S</span>
-          <span className="text-8xl font-medium leading-[130px]  ml-10">
-            GET
-          </span>
-          <span className="text-8xl font-medium leading-[130px] ">
-            IN TOUCH
-          </span>
+      <div className="flex flex-col sm:flex-row items-center justify-center min-h-screen  w-full px-2 sm:px-24 gap-10">
+        <div className="flex flex-col h-full sm:w-1/2 w-full sm:mt-0 mt-16 px-8 sm:px-0 ">
+          <div className="flex flex-col h-full w-full ">
+            <span className="sm:text-8xl text-7xl  leading-[100px]  font-medium sm:leading-[130px] ">
+              LET'S
+            </span>
+            <span className="sm:text-8xl text-7xl  leading-[100px]  font-medium sm:leading-[130px] ">
+              GET
+            </span>
+            <span className="sm:text-8xl text-7xl  leading-[100px]  font-medium sm:leading-[130px] ">
+              IN TOUCH
+            </span>
+          </div>
           <div className="flex flex-col gap-8 mt-5">
-            <div className="flex gap-16 ">
+            <div className="flex flex-col sm:flex-row gap-8 sm:gap-16 ">
               <div className="flex gap-4 items-center">
                 <GitHubIcon />
                 <div className="flex flex-col">
@@ -104,7 +108,7 @@ const contactPage = () => {
                 </div>
               </div>{" "}
             </div>
-            <div className="flex gap-16 ">
+            <div className="flex flex-col sm:flex-row gap-8 sm:gap-16 ">
               <div className="flex gap-4 items-center">
                 <EmailIcon />
                 <div className="flex flex-col">
@@ -122,7 +126,7 @@ const contactPage = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col h-full w-1/2 p-4">
+        <div className="flex flex-col h-full w-full sm:w-1/2 px-8 sm:px-0 sm:p-4">
           <form className="flex flex-col space-y-8" onSubmit={handleSubmit}>
             {/* Name Input */}
             <div>
@@ -177,9 +181,9 @@ const contactPage = () => {
 
             {/* Submit Button */}
             <button
-            disabled={!isFormValid}
+              disabled={!isFormValid}
               type="submit"
-              className="self-start px-4 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-500 disabled:text-gray-400"
+              className="self-start px-4 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-500 disabled:text-gray-400 sm:!mb-0 !mb-7"
             >
               Submit
             </button>

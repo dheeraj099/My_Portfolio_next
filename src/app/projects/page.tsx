@@ -30,16 +30,16 @@ const page = () => {
   
 
   return (
-    <div className="flex flex-col bg-black">
+    <div className="flex flex-col flex-auto  bg-black">
       {/* <video id="overlay_video" className="body-overlay" muted autoPlay loop>
         <source src="/projectPageVideo.mp4" type="video/mp4" />
       </video> */}
-      <div className="absolute top-0 w-full">
+      {/* <div className="absolute top-0 w-full"> */}
       <Header/>
-      </div>
-      <div className="projectPageWrapper">
-        <div className="flex flex-col w-full h-screen bg-transparent items-center justify-center">
-          <span className="text-[80px] text-white">Let’s Take a Tour!</span>
+      {/* </div> */}
+      <div className="flex flex-col   ">
+        <div className="flex flex-col w-full min-h-[calc(100vh-7rem)] sm:h-screen bg-transparent items-center justify-center ">
+          <span className=" text-white text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-8xl">Let’s Take a Tour!</span>
           <span className="text-center absolute bottom-32 text-md text-white">
             Explore the projects <br />
             that define my journey and expertise
@@ -51,8 +51,8 @@ const page = () => {
             <ArrowDropDownIcon sx={{ color:"white" }} />
           </div>
         </div>
-        <div ref={scrollTargetRef} className="flex w-full px-8 bg-transparent">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-24 p-24 w-full">
+        <div ref={scrollTargetRef} className="flex w-full px-1 sm:px-8 bg-transparent mt-10 sm:mt-0">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-24 p-10 sm:p-24 w-full ">
             <div className="projectcard flex flex-col cursor-pointer " onClick={()=>handleProject("Aiotel")}>
               {/* <img
                 className="rounded-[30px] px-3 pt-3"
