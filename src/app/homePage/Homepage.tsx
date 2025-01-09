@@ -62,27 +62,27 @@ const Homepage = () => {
           <div className="menu-wrap">
             <p>Menu</p>
             <ul className="menu scroll-nav-responsive d-flex">
-              <li>
+              <li onClick={()=>setIsSidebarActive(false)}>
                 <a className="scroll-to" href="#home">
                   <i className="las la-home"></i> <span>Home</span>
                 </a>
               </li>
-              <li>
+              <li onClick={()=>setIsSidebarActive(false)}>
                 <a className="scroll-to" href="#about">
                   <i className="lar la-user"></i> <span>About</span>
                 </a>
               </li>
-              <li>
+              <li onClick={()=>setIsSidebarActive(false)}>
                 <a className="scroll-to" href="#resume">
                   <i className="las la-briefcase"></i> <span>Resume</span>
                 </a>
               </li>
-              <li>
+              <li onClick={()=>setIsSidebarActive(false)}>
                 <a className="scroll-to" href="#skills">
                   <i className="las la-shapes"></i> <span>Skills</span>
                 </a>
               </li>
-              <li>
+              <li onClick={()=>setIsSidebarActive(false)}>
                 <a className="scroll-to" href="#portfolio">
                   <i className="las la-grip-vertical"></i>{" "}
                   <span>Portfolios</span>
@@ -251,7 +251,7 @@ const Homepage = () => {
                       data-animation="fade_from_bottom"
                     >
                       Hi from
-                      <span>Dheeraj</span>, Frontend Developer
+                      <span> Dheeraj</span>, Frontend Developer
                     </h1>
                   </div>
                   <p
@@ -604,7 +604,7 @@ const Homepage = () => {
                       data-animation="fade_from_bottom"
                     >
                       Featured
-                      <span>Project</span>
+                      <span> Project</span>
                     </h1>
                   </motion.div>
                   <div className="row portfolio-items">

@@ -156,7 +156,7 @@ const page = () => {
   };
 
   return (
-    <div className="flex flex-col flex-auto w-full">
+    <div className="flex flex-col flex-auto w-full bg-black">
       <Header />
       <div className="flex flex-col items-center justify-center sm:items-start sm:justify-start min-h-[calc(100vh-7rem)] sm:h-screen  w-full overflow-y-hidden">
         <div className="absolute bg-black/70 w-full min-h-[calc(100vh-7rem)] sm:h-screen flex "></div>
