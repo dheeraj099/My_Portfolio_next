@@ -174,9 +174,9 @@ const page = () => {
       <div className="flex flex-col h-screen w-full justify-center px-10 sm:px-24">
         <div className="flex flex-col sm:flex-row w-full gap-14 items-center">
           <div className="flex flex-col border-l border-white h-fit w-full sm:w-[35%] ml-0 sm:ml-6 pl-6 py-8">
-            <span className="text-sm">ABOUT</span>
-            <span className="text-2xl mt-8">{projectData?.description}</span>
-            <span className="text-base mt-24">{projectData?.about}</span>
+            <span className="text-sm text-[#EDEDED]">ABOUT</span>
+            <span className="text-2xl mt-8 text-[#EDEDED]">{projectData?.description}</span>
+            <span className="text-base mt-24 text-[#EDEDED]">{projectData?.about}</span>
           </div>
           <div className="flex flex-grow items-center">
             <img
@@ -199,7 +199,7 @@ const page = () => {
           </div>
 
           <div className="flex w-full order-1 ml-0 sm:ml-6 pl-6 sm:order-2 sm:w-[35%] flex-col border-l  border-white sm:border-l-0 sm:border-r sm:border-white h-fit mr-0 sm:mr-32 pr-6 py-8 ">
-            <span className="text-sm">TECHNOLOGIES</span>
+            <span className="text-sm text-[#EDEDED]">TECHNOLOGIES</span>
             <div className="grid grid-cols-2 gap-4 mt-8">
               <div className="bg-white text-white p-4">
                 <img src={projectData?.images?.technologies?.nextjs} />
@@ -215,7 +215,7 @@ const page = () => {
       <div className="flex flex-col min-h-screen lg:h-full sm:h-screen w-full justify-center px-10 sm:px-24 ">
         <div className="flex flex-col w-full gap-14 ">
           <div className="flex flex-col gap-3 items-center justify-center h-fit w-full ml-0 sm:ml-6 pl-6 py-8">
-            <span className="text-sm text-center">FEATURES</span>
+            <span className="text-sm text-center text-[#EDEDED]">FEATURES</span>
             <hr className="border border-white w-[80%] sm:w-[20%]"></hr>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -240,7 +240,7 @@ const page = () => {
       <div className="flex flex-col min-h-screen w-full justify-center px-10 sm:px-0 ">
         <div className="flex flex-col w-full gap-14 ">
           <div className="flex flex-col gap-3 items-center justify-centerh-fit w-full  pl-6 py-8">
-            <span className="text-sm text-center">CONTRIBUTIONS</span>
+            <span className="text-sm text-center text-[#EDEDED]">CONTRIBUTIONS</span>
             <hr className="border border-white w-[20%]"></hr>
           </div>
 
@@ -277,8 +277,8 @@ const page = () => {
                     </div>
                     {/* <!-- Text --> */}
                     <div className="flex-1">
-                      <div className="text-lg font-semibold">{item.title}</div>
-                      <div className="text-gray-600 text-sm">
+                      <div className="text-lg font-semibold text-[#EDEDED]">{item.title}</div>
+                      <div className="text-gray-300 text-sm">
                         {item.description}
                       </div>
                     </div>
@@ -293,7 +293,7 @@ const page = () => {
         <div className="flex flex-col w-full gap-7">
           <div className="flex flex-col gap-3 items-center justify-center h-fit w-full pl-6 py-8 mt-0 sm:mt-8 ">
             <div className="flex gap-6 items-center justify-center">
-              <span className="text-sm text-center">SNAPSHOTS</span>
+              <span className="text-sm text-center text-[#EDEDED]">SNAPSHOTS</span>
               <div className="livebuttoncontainer flex w-full items-end justify-end">
                 <button className=" mr-[50px]">
                   <svg
@@ -310,7 +310,7 @@ const page = () => {
                   </svg>
                   <a href={`${projectData?.live}`}>
 
-                  <span>Live</span>
+                  <span className="text-[#EDEDED]">Live</span>
                   </a>
                 </button>
               </div>
