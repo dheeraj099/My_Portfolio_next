@@ -7,14 +7,17 @@ const Header = () => {
   return (
     <div className="flex px-8 h-12 bg-black justify-between header-shadow z-[99] items-center fixed  w-full">
       
-        <Button size="small" onClick={() => router.back()} sx={{ margin:"0px", padding:"0px" }} className="hidden sm:block">
+      <div  className="!hidden sm:!block">
+
+        <Button size="small" onClick={() => router.back()} sx={{ margin:"0px", padding:"0px" }}>
           <div className="flex items-center border border-white  rounded-lg px-1 py-1 hover:bg-[#212121]">
             <ChevronLeftIcon
               sx={{ height: "16px", width: "16px", color: "white" }}
-            />
+              />
             <span className="pr-1 text-xs text-white">Back</span>
           </div>
         </Button>
+              </div>
       <div className=" flex items-center gap-6">
         <span className="text-xs font-semibold cursor-pointer text-white" onClick={()=>router.push("/")}> Home </span>
         {/* <span className="text-xs font-semibold cursor-pointer text-white">About</span> */}

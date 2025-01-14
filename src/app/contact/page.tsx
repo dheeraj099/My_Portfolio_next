@@ -102,7 +102,7 @@ const contactPage = () => {
     <div className="flex flex-col bg-black">
       <Header />
 
-      <div className="flex flex-col sm:flex-row items-center justify-center min-h-screen  w-full px-2 sm:px-24 gap-10 ">
+      <div className="flex flex-col sm:flex-row items-center justify-center min-h-screen  w-full px-2 !sm:px-24 !md:px-24 !lg:px-24 !lg:px-24 !xl:px-24 !2xl:px-24 gap-10 ">
         <div className="flex flex-col sm:flex-row sm:gap-[20%] h-full sm:w-full w-full sm:mt-0 mt-16 px-8 sm:px-0 sm:justify-between sm:items-center">
           <div className="flex flex-col h-full w-full ">
             <span className="sm:text-8xl text-white text-7xl  leading-[100px]  font-medium sm:leading-[130px] ">
@@ -120,8 +120,8 @@ const contactPage = () => {
               <div className="flex gap-4 items-center">
                 <GitHubIcon />
                 <div className="flex flex-col">
-                  <span className="font-bold text-base">Github</span>
-                  <span className="text-xs">
+                  <span className="font-bold text-base text-white">Github</span>
+                  <span className="text-xs text-white">
                     <a href="https://github.com/dheeraj099">
                       https://github.com/dheeraj099
                     </a>{" "}
@@ -131,8 +131,8 @@ const contactPage = () => {
               <div className="flex gap-4 items-center">
                 <LinkedInIcon />
                 <div className="flex flex-col">
-                  <span className="font-bold text-base">Linkedin</span>
-                  <span className="text-xs">
+                  <span className="font-bold text-base text-white">Linkedin</span>
+                  <span className="text-xs text-white">
                     <a href="https://www.linkedin.com/in/dheeraj-p-girish">
                       https://www.linkedin.com/in/dheeraj-p-girish
                     </a>{" "}
@@ -144,15 +144,15 @@ const contactPage = () => {
               <div className="flex gap-4 items-center">
                 <EmailIcon />
                 <div className="flex flex-col">
-                  <span className="font-bold text-base">Email</span>
-                  <span className="text-xs">dheerajpgirish09@gmail.com</span>
+                  <span className="font-bold text-base text-white">Email</span>
+                  <span className="text-xs text-white">dheerajpgirish09@gmail.com</span>
                 </div>
               </div>
               <div className="flex gap-4 items-center">
                 <PhoneIcon />
                 <div className="flex flex-col">
-                  <span className="font-bold text-base">Phone</span>
-                  <span className="text-xs">+91 9495482212</span>
+                  <span className="font-bold text-base text-white">Phone</span>
+                  <span className="text-xs text-white">+91 9495482212</span>
                 </div>
               </div>
             </div>
