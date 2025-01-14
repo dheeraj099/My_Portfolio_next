@@ -102,7 +102,7 @@ const contactPage = () => {
     <div className="flex flex-col bg-black">
       <Header />
 
-      <div className="flex flex-col sm:flex-row items-center justify-center min-h-screen  w-full px-2 !sm:px-24 !md:px-24 !lg:px-24 !lg:px-24 !xl:px-24 !2xl:px-24 gap-10 ">
+      <div className="flex flex-col sm:flex-row items-center justify-center min-h-screen  w-full !px-2 sm:!px-24 md:!px-24 lg:!px-24  xl:!px-24 2xl:!px-24 gap-10 ">
         <div className="flex flex-col sm:flex-row sm:gap-[20%] h-full sm:w-full w-full sm:mt-0 mt-16 px-8 sm:px-0 sm:justify-between sm:items-center">
           <div className="flex flex-col h-full w-full ">
             <span className="sm:text-8xl text-white text-7xl  leading-[100px]  font-medium sm:leading-[130px] ">
