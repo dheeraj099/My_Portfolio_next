@@ -1,39 +1,73 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import Header from "../common/Header";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import EmailIcon from "@mui/icons-material/Email";
 import PhoneIcon from "@mui/icons-material/Phone";
 import { Snackbar } from "@mui/material";
+import { ContactEmailProps } from "../common/Contact";
 const contactPage = () => {
-  const [formData, setFormData] = useState({
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+
+  const [formData, setFormData] = useState<ContactEmailProps>({
     name: "",
     email: "",
     message: "",
   });
 
-  const handleChange = (e: any) => {
+  const [isSending, setIsSending] = useState<boolean>(false);
+
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+    setFormData((prev: ContactEmailProps) => ({ ...prev, [name]: value }));
   };
+
+  const emailData = {
+    name,
+    email,
+    message,
+  };
+
+  // const handleChange = (e: any) => {
+  //   const { name, value } = e.target;
+  //   setFormData((prevData) => ({
+  //     ...prevData,
+  //     [name]: value,
+  //   }));
+  // };
   const [response, setResponse] = useState(false);
-  const handleSubmit = async (e: any) => {
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    if (!formData.name || !formData.email || !formData.message) {
+      return;
+    }
     try {
-      const response = await fetch("http://localhost:3001/send-email", {
+      setIsSending(true);
+      const response = await fetch("/contact/api", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        }),
       });
       if (response.status === 200) {
         setResponse(true);
+        setFormData({
+          name: "",
+          email: "",
+          message: "",
+        });
       }
       const data = await response.json();
     } catch (error) {
@@ -51,11 +85,9 @@ const contactPage = () => {
   useEffect(() => {
     if (response) {
       setOpen(true); // Open Snackbar when response is available
-      setFormData({
-        name: "",
-        email: "",
-        message: "",
-      });
+      setName("");
+      setEmail("");
+      setMessage("");
 
       const timer = setTimeout(() => {
         setOpen(false); // Close Snackbar after 3 seconds
@@ -65,13 +97,13 @@ const contactPage = () => {
       return () => clearTimeout(timer);
     }
   }, [response]); // Dependency on response, so it runs when response changes
-  const isFormValid = formData.name && formData.email && formData.message;
+  const isFormValid = emailData.name && emailData.email && emailData.message;
   return (
     <div className="flex flex-col bg-black">
       <Header />
 
-      <div className="flex flex-col sm:flex-row items-center justify-center min-h-screen  w-full px-2 sm:px-24 gap-10">
-        <div className="flex flex-col h-full sm:w-1/2 w-full sm:mt-0 mt-16 px-8 sm:px-0 ">
+      <div className="flex flex-col sm:flex-row items-center justify-center min-h-screen  w-full px-2 sm:px-24 gap-10 ">
+        <div className="flex flex-col sm:flex-row sm:gap-[20%] h-full sm:w-full w-full sm:mt-0 mt-16 px-8 sm:px-0 sm:justify-between sm:items-center">
           <div className="flex flex-col h-full w-full ">
             <span className="sm:text-8xl text-7xl  leading-[100px]  font-medium sm:leading-[130px] ">
               LET'S
@@ -126,9 +158,8 @@ const contactPage = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col h-full w-full sm:w-1/2 px-8 sm:px-0 sm:p-4">
+        {/* <div className="flex flex-col h-full w-full sm:w-1/2 px-8 sm:px-0 sm:p-4">
           <form className="flex flex-col space-y-8" onSubmit={handleSubmit}>
-            {/* Name Input */}
             <div>
               <label htmlFor="name" className="block text-base font-semibold">
                 Name
@@ -141,10 +172,9 @@ const contactPage = () => {
                 placeholder="Enter your name"
                 value={formData.name}
                 onChange={handleChange}
+                required
               />
             </div>
-
-            {/* Email Input */}
             <div>
               <label htmlFor="email" className="block text-base font-semibold">
                 Email
@@ -159,8 +189,6 @@ const contactPage = () => {
                 onChange={handleChange}
               />
             </div>
-
-            {/* Message Input */}
             <div>
               <label
                 htmlFor="message"
@@ -176,10 +204,10 @@ const contactPage = () => {
                 placeholder="Enter your message"
                 value={formData.message}
                 onChange={handleChange}
+                required
               />
             </div>
 
-            {/* Submit Button */}
             <button
               disabled={!isFormValid}
               type="submit"
@@ -188,7 +216,7 @@ const contactPage = () => {
               Submit
             </button>
           </form>
-        </div>
+        </div> */}
       </div>
       {response && (
         <Snackbar

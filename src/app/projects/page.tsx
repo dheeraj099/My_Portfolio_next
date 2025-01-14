@@ -4,7 +4,7 @@ import AiotelProject from "@/app/assets/aiotel_project2.png";
 import KarmminProject from "@/app/assets/K_Project.png";
 import thingspad_img from "@/app/assets/ThingsPad_PR.png";
 import Twinvrse_p from "@/app/assets/Twinvrse2.png";
-import statsphereImage from "@/app/assets/statsphereImage.png"
+import statsphereImage from "@/app/assets/statsphereImage.png";
 import "@/app/projects/projectpage.css";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import Image from "next/image";
@@ -19,15 +19,11 @@ const page = () => {
       scrollTargetRef.current.scrollIntoView({ behavior: "smooth" });
     }
   };
-  const router = useRouter(); 
+  const router = useRouter();
 
   const handleProject = (projectName: string) => {
-  
-    
     router.push(`/projects/${projectName}`); // Redirect dynamically
   };
-  
-  
 
   return (
     <div className="flex flex-col flex-auto  bg-black">
@@ -35,11 +31,13 @@ const page = () => {
         <source src="/projectPageVideo.mp4" type="video/mp4" />
       </video> */}
       {/* <div className="absolute top-0 w-full"> */}
-      <Header/>
+      <Header />
       {/* </div> */}
       <div className="flex flex-col   ">
         <div className="flex flex-col w-full min-h-[calc(100vh-7rem)] sm:h-screen bg-transparent items-center justify-center ">
-          <span className=" text-white text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-8xl">Let’s Take a Tour!</span>
+          <span className=" text-white text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-8xl">
+            Let’s Take a Tour!
+          </span>
           <span className="text-center absolute bottom-32 text-md text-white">
             Explore the projects <br />
             that define my journey and expertise
@@ -48,17 +46,23 @@ const page = () => {
             onClick={handleScroll}
             className="flex absolute bottom-6 w-[62px] h-[88px] rounded-[42px] mt-3 items-center justify-center hover:bg-heath-700 hover:cursor-pointer border border-white"
           >
-            <ArrowDropDownIcon sx={{ color:"white" }} />
+            <ArrowDropDownIcon sx={{ color: "white" }} />
           </div>
         </div>
-        <div ref={scrollTargetRef} className="flex w-full px-1 sm:px-8 bg-transparent mt-10 sm:mt-0">
+        <div
+          ref={scrollTargetRef}
+          className="flex w-full px-1 sm:px-8 bg-transparent mt-10 sm:mt-0"
+        >
           <div className="grid grid-cols-1 md:grid-cols-3 gap-24 p-10 sm:p-24 w-full ">
-            <div className="projectcard flex flex-col cursor-pointer " onClick={()=>handleProject("Aiotel")}>
-              {/* <img
+            <div
+              className="projectcard flex flex-col cursor-pointer "
+              onClick={() => handleProject("Aiotel")}
+            >
+              <Image
                 className="rounded-[30px] px-3 pt-3"
-                src="https://images.pexels.com/photos/17805369/pexels-photo-17805369/free-photo-of-a-mountain-range-with-a-lake-in-the-middle.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-              /> */}
-              <Image className="rounded-[30px] px-3 pt-3" src={AiotelProject} alt="Aiotel project"/>
+                src={AiotelProject}
+                alt="Aiotel project"
+              />
               <div className="flex justify-between mt-2 items-center px-4 ">
                 <span className=" text-center font-semibold text-white ">
                   Aiotel - Website
@@ -76,12 +80,15 @@ const page = () => {
                 </button>
               </div>
             </div>
-            <div className="projectcard flex flex-col cursor-pointer  " onClick={()=>handleProject("Karmmin")}>
-              {/* <img
+            <div
+              className="projectcard flex flex-col cursor-pointer  "
+              onClick={() => handleProject("Karmmin")}
+            >
+              <Image
+                src={KarmminProject}
+                alt="Karmmin Project"
                 className="rounded-[30px] px-3 pt-3"
-                src="https://images.pexels.com/photos/17805369/pexels-photo-17805369/free-photo-of-a-mountain-range-with-a-lake-in-the-middle.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-              /> */}
-              <Image src={KarmminProject} alt="Karmmin Project" className="rounded-[30px] px-3 pt-3"/>
+              />
               <div className="flex justify-between mt-2 mb-2 items-center px-4">
                 <span className=" text-center font-semibold text-white ">
                   Karmmin - Edu-tech Platform
@@ -99,12 +106,15 @@ const page = () => {
                 </button>
               </div>
             </div>
-            <div className="projectcard flex flex-col cursor-pointer " onClick={()=>handleProject("TwinPad")}>
-              {/* <img
+            <div
+              className="projectcard flex flex-col cursor-pointer "
+              onClick={() => handleProject("TwinPad")}
+            >
+              <Image
+                src={Twinvrse_p}
+                alt="twinvrse project"
                 className="rounded-[30px] px-3 pt-3"
-                src="https://images.pexels.com/photos/17805369/pexels-photo-17805369/free-photo-of-a-mountain-range-with-a-lake-in-the-middle.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-              /> */}
-              <Image src={Twinvrse_p} alt="twinvrse project" className="rounded-[30px] px-3 pt-3"/>
+              />
               <div className="flex justify-between mt-2 items-center px-4">
                 <span className=" text-center font-semibold text-white ">
                   Twinvrse - 3D platform
@@ -122,15 +132,18 @@ const page = () => {
                 </button>
               </div>
             </div>
-            <div className=" projectcard flex flex-col cursor-pointer " onClick={()=>handleProject("Statsphere")}>
-              {/* <img
+            <div
+              className=" projectcard flex flex-col cursor-pointer "
+              onClick={() => handleProject("Statsphere")}
+            >
+              <Image
+                src={statsphereImage}
+                alt="statsphere project"
                 className="rounded-[30px] px-3 pt-3"
-                src="https://images.pexels.com/photos/17805369/pexels-photo-17805369/free-photo-of-a-mountain-range-with-a-lake-in-the-middle.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-              /> */}
-              <Image src={statsphereImage} alt="statsphere project" className="rounded-[30px] px-3 pt-3"/>
+              />
               <div className="flex justify-between mt-2 items-center px-4">
                 <span className=" text-center font-semibold text-white ">
-                Statsphere - GenAI Analysis Platform
+                  Statsphere - GenAI Analysis Platform
                 </span>
 
                 <button className="button">
@@ -145,12 +158,15 @@ const page = () => {
                 </button>
               </div>
             </div>
-            <div className="projectcard flex flex-col cursor-pointer " onClick={()=>handleProject("Thingspad")}>
-              {/* <img
+            <div
+              className="projectcard flex flex-col cursor-pointer "
+              onClick={() => handleProject("Thingspad")}
+            >
+              <Image
                 className="rounded-[30px] px-3 pt-3"
-                src="https://images.pexels.com/photos/17805369/pexels-photo-17805369/free-photo-of-a-mountain-range-with-a-lake-in-the-middle.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-              /> */}
-              <Image className="rounded-[30px] px-3 pt-3" src={thingspad_img} alt="thingspad project"/>
+                src={thingspad_img}
+                alt="thingspad project"
+              />
               <div className="flex justify-between mt-2 items-center px-4">
                 <span className=" text-center font-semibold text-white ">
                   Thingspad - website
@@ -168,8 +184,15 @@ const page = () => {
                 </button>
               </div>
             </div>
-            <div className="projectcard flex flex-col cursor-pointer " onClick={()=>handleProject("3dTwin")}>
-              <Image src={three_img} alt="3D twin" className="rounded-[30px] px-3 pt-3"/>
+            <div
+              className="projectcard flex flex-col cursor-pointer "
+              onClick={() => handleProject("3dTwin")}
+            >
+              <Image
+                src={three_img}
+                alt="3D twin"
+                className="rounded-[30px] px-3 pt-3"
+              />
               <div className="flex justify-between mt-2 mb-2 items-center px-4">
                 <span className=" text-center font-semibold text-white ">
                   3dTwin - website

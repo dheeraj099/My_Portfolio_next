@@ -3,12 +3,14 @@ import Header from "@/app/common/Header";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { useParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import "swiper/css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { supabase } from "../../../../supabase";
+import Image from "next/image";
+import { motion } from "framer-motion";
 interface Project {
   id: number;
   title: string;
@@ -23,7 +25,9 @@ interface Project {
   snapshots?: Record<string, any>[];
 }
 const page = () => {
-  const { projectName } = useParams();
+  
+const params = useParams() as { projectName: string };
+const { projectName } = params;
   const [projectData, setProjectData] = useState<Project | null>(null);
 
   useEffect(() => {
@@ -154,13 +158,57 @@ const page = () => {
       setIsLastSlide(isAtLastSlide); // Update the state for the last slide
     }
   };
+  const myLoader = ({
+    src,
+    width,
+    quality,
+  }: {
+    src: any;
+    width: any;
+    quality: any;
+  }) => {
+    return projectData?.heroSection_image;
+  };
+  const [inView, setInView] = useState(false);
+  const sectionRef = useRef(null);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true); // Set to true when the section is in view
+        }
+      },
+      {
+        threshold: 0.5, // Trigger when 50% of the section is visible
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current); // Start observing the section
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current); // Clean up observer
+      }
+    };
+  }, []);
   return (
     <div className="flex flex-col flex-auto w-full bg-black">
       <Header />
       <div className="flex flex-col items-center justify-center sm:items-start sm:justify-start min-h-[calc(100vh-7rem)] sm:h-screen  w-full overflow-y-hidden">
         <div className="absolute bg-black/70 w-full min-h-[calc(100vh-7rem)] sm:h-screen flex "></div>
-        <img src={projectData?.heroSection_image} />
+        <Image
+          src={projectData?.heroSection_image || "/fallback-image.jpg"} // Fallback image if null
+          alt="Hero Section Image"
+          width={0}
+          height={0}
+          sizes="100vw"
+          style={{ width: "100%", height: "auto" }} // optional
+          className="object-cover"
+        />
+
         <div className="flex flex-col gap-2 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 ">
           <span className="text-2xl  sm:text-7xl text-white text-center font-medium uppercase">
             {projectData?.title}
@@ -175,14 +223,19 @@ const page = () => {
         <div className="flex flex-col sm:flex-row w-full gap-14 items-center">
           <div className="flex flex-col border-l border-white h-fit w-full sm:w-[35%] ml-0 sm:ml-6 pl-6 py-8">
             <span className="text-sm text-[#EDEDED]">ABOUT</span>
-            <span className="text-2xl mt-8 text-[#EDEDED]">{projectData?.description}</span>
-            <span className="text-base mt-24 text-[#EDEDED]">{projectData?.about}</span>
+            <span className="text-2xl mt-8 text-[#EDEDED]">
+              {projectData?.description}
+            </span>
+            <span className="text-base mt-24 text-[#EDEDED]">
+              {projectData?.about}
+            </span>
           </div>
           <div className="flex flex-grow items-center">
-            <img
-              src={projectData?.images?.about || null}
-              alt="Project about"
-              className="w-[650px] h-full"
+            <Image
+              src={projectData?.images?.about || "/fallback-image.jpg"} // Fallback image if null
+              alt="Hero Section Image"
+              width={650}
+              height={0}
             />
           </div>
         </div>
@@ -191,10 +244,11 @@ const page = () => {
       <div className="flex flex-col h-screen w-full justify-center px-10 sm:px-0">
         <div className="flex flex-col sm:flex-row w-full  items-center">
           <div className="flex flex-col order-2 sm:order-1  ml-0 sm:ml-6 pl-6 border-white h-fit  w-full sm:w-[65%]  justify-start items-start">
-            <img
-              src={projectData?.images?.about || null}
+            <Image
+              src={projectData?.images?.about || "/fallback-image.jpg"} // Fallback image if null
               alt="Project about"
-              className="w-[650px] h-full  "
+              width={650}
+              height={0}
             />
           </div>
 
@@ -202,10 +256,28 @@ const page = () => {
             <span className="text-sm text-[#EDEDED]">TECHNOLOGIES</span>
             <div className="grid grid-cols-2 gap-4 mt-8">
               <div className="bg-white text-white p-4">
-                <img src={projectData?.images?.technologies?.nextjs} />
+                <Image
+                  src={
+                    projectData?.images?.technologies?.nextjs ||
+                    "/fallback-image.jpg"
+                  } // Fallback image if null
+                  alt="Project about"
+                  width={0}
+                  height={0}
+                  style={{ width: "100%", height: "auto" }}
+                />
               </div>
               <div className="bg-white text-white p-4 flex items-center justify-center">
-                <img src={projectData?.images?.technologies?.tailwind} />
+                <Image
+                  src={
+                    projectData?.images?.technologies?.tailwind ||
+                    "/fallback-image.jpg"
+                  } // Fallback image if null
+                  alt="Project about"
+                  width={0}
+                  height={0}
+                  style={{ width: "100%", height: "auto" }}
+                />
               </div>
             </div>
           </div>
@@ -240,7 +312,9 @@ const page = () => {
       <div className="flex flex-col min-h-screen w-full justify-center px-10 sm:px-0 ">
         <div className="flex flex-col w-full gap-14 ">
           <div className="flex flex-col gap-3 items-center justify-centerh-fit w-full  pl-6 py-8">
-            <span className="text-sm text-center text-[#EDEDED]">CONTRIBUTIONS</span>
+            <span className="text-sm text-center text-[#EDEDED]">
+              CONTRIBUTIONS
+            </span>
             <hr className="border border-white w-[20%]"></hr>
           </div>
 
@@ -264,26 +338,42 @@ const page = () => {
               <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-gray-300"></div>
 
               {/* <!-- Each Row --> */}
-              {projectData?.contributions &&
-                projectData?.contributions.map((item, index) => (
-                  <div key={index} className="flex items-center space-x-4">
-                    {/* <!-- Number Circle --> */}
-                    <div
-                      className={`relative z-10 flex items-center justify-center w-12 h-12 text-white font-bold rounded-full ${getColor(
-                        index
-                      )}`}
+              <div ref={sectionRef} className="space-y-6">
+                {projectData?.contributions &&
+                  projectData?.contributions.map((item, index) => (
+                    <motion.div
+                      key={index}
+                      className="flex items-center space-x-4"
+                      initial={{ opacity: 0, y: 20 }} // Initial state: hidden and slightly below
+                      animate={{
+                        opacity: inView ? 1 : 0, // Fade in when in view
+                        y: inView ? 0 : 20, // Slide up when in view
+                      }}
+                      transition={{
+                        delay: index * 0.5, // Delay each item for staggered effect
+                        duration: 0.5, // Duration of the animation
+                      }}
                     >
-                      {item.number}
-                    </div>
-                    {/* <!-- Text --> */}
-                    <div className="flex-1">
-                      <div className="text-lg font-semibold text-[#EDEDED]">{item.title}</div>
-                      <div className="text-gray-300 text-sm">
-                        {item.description}
+                      {/* <!-- Number Circle --> */}
+                      <div
+                        className={`relative z-10 flex items-center justify-center w-12 h-12 text-white font-bold rounded-full ${getColor(
+                          index
+                        )}`}
+                      >
+                        {item.number}
                       </div>
-                    </div>
-                  </div>
-                ))}
+                      {/* <!-- Text --> */}
+                      <div className="flex-1">
+                        <div className="text-lg font-semibold text-[#EDEDED]">
+                          {item.title}
+                        </div>
+                        <div className="text-gray-300 text-sm">
+                          {item.description}
+                        </div>
+                      </div>
+                    </motion.div>
+                  ))}
+              </div>
             </div>
           </div>
         </div>
@@ -293,7 +383,9 @@ const page = () => {
         <div className="flex flex-col w-full gap-7">
           <div className="flex flex-col gap-3 items-center justify-center h-fit w-full pl-6 py-8 mt-0 sm:mt-8 ">
             <div className="flex gap-6 items-center justify-center">
-              <span className="text-sm text-center text-[#EDEDED]">SNAPSHOTS</span>
+              <span className="text-sm text-center text-[#EDEDED]">
+                SNAPSHOTS
+              </span>
               <div className="livebuttoncontainer flex w-full items-end justify-end">
                 <button className=" mr-[50px]">
                   <svg
@@ -309,8 +401,7 @@ const page = () => {
                     ></path>
                   </svg>
                   <a href={`${projectData?.live}`}>
-
-                  <span className="text-[#EDEDED]">Live</span>
+                    <span className="text-[#EDEDED]">Live</span>
                   </a>
                 </button>
               </div>

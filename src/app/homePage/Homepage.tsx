@@ -17,6 +17,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { supabase } from "../../../supabase";
 import { useEffect, useRef, useState } from "react";
+import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 // import "@/app/homePage/custom.css";
 // import overlay from "@/"
 const Homepage = () => {
@@ -29,8 +30,8 @@ const Homepage = () => {
   const handleOutsideClick = (event: MouseEvent) => {
     if ((event.target as HTMLElement).classList.contains("overlay")) {
       setIsSidebarActive(false); // Close sidebar
-    } 
-};
+    }
+  };
 
   useEffect(() => {
     if (isSidebarActive) {
@@ -62,27 +63,27 @@ const Homepage = () => {
           <div className="menu-wrap">
             <p>Menu</p>
             <ul className="menu scroll-nav-responsive d-flex">
-              <li onClick={()=>setIsSidebarActive(false)}>
+              <li onClick={() => setIsSidebarActive(false)}>
                 <a className="scroll-to" href="#home">
                   <i className="las la-home"></i> <span>Home</span>
                 </a>
               </li>
-              <li onClick={()=>setIsSidebarActive(false)}>
+              <li onClick={() => setIsSidebarActive(false)}>
                 <a className="scroll-to" href="#about">
                   <i className="lar la-user"></i> <span>About</span>
                 </a>
               </li>
-              <li onClick={()=>setIsSidebarActive(false)}>
+              <li onClick={() => setIsSidebarActive(false)}>
                 <a className="scroll-to" href="#resume">
                   <i className="las la-briefcase"></i> <span>Resume</span>
                 </a>
               </li>
-              <li onClick={()=>setIsSidebarActive(false)}>
+              <li onClick={() => setIsSidebarActive(false)}>
                 <a className="scroll-to" href="#skills">
                   <i className="las la-shapes"></i> <span>Skills</span>
                 </a>
               </li>
-              <li onClick={()=>setIsSidebarActive(false)}>
+              <li onClick={() => setIsSidebarActive(false)}>
                 <a className="scroll-to" href="#portfolio">
                   <i className="las la-grip-vertical"></i>{" "}
                   <span>Portfolios</span>
@@ -125,48 +126,42 @@ const Homepage = () => {
       </div>
       {/* END - Hamburger menu  */}
 
-<div className="desktopMenu">
-      <ul className="menu scroll-nav d-flex   ">
-        <li>
-          <a className="scroll-to" href="#home">
-            <span>Home</span> <i className="las la-home" />
-          </a>
-        </li>
-        <li>
-          <a className="scroll-to" href="#about">
-            <span>About</span> <i className="lar la-user" />
-          </a>
-        </li>
-        <li>
-          <a className="scroll-to" href="#resume">
-            <span>Resume</span> <i className="las la-briefcase" />
-          </a>
-        </li>
+      <div className="desktopMenu">
+        <ul className="menu scroll-nav d-flex   ">
+          <li>
+            <a className="scroll-to" href="#home">
+              <span>Home</span> <i className="las la-home" />
+            </a>
+          </li>
+          <li>
+            <a className="scroll-to" href="#about">
+              <span>About</span> <i className="lar la-user" />
+            </a>
+          </li>
+          <li>
+            <a className="scroll-to" href="#resume">
+              <span>Resume</span> <i className="las la-briefcase" />
+            </a>
+          </li>
 
-        <li>
-          <a className="scroll-to" href="#skills">
-            <span>Skills</span> <i className="las la-shapes" />
-          </a>
-        </li>
-        <li>
-          <a className="scroll-to" href="#portfolio">
-            <span>Portfolios</span> <i className="las la-grip-vertical" />
-          </a>
-        </li>
-      </ul>
+          <li>
+            <a className="scroll-to" href="#skills">
+              <span>Skills</span> <i className="las la-shapes" />
+            </a>
+          </li>
+          <li>
+            <a className="scroll-to" href="#portfolio">
+              <span>Portfolios</span> <i className="las la-grip-vertical" />
+            </a>
+          </li>
+        </ul>
       </div>
-
 
       <div className="left-sidebar mt-0 sm:mt-5">
         <div className="sidebar-header d-flex w-full align-items-center justify-content-center">
           <span className="name">Dheeraj P Girish</span>
           <span className="designation2">Software Engineer</span>
         </div>
-        {/* <img
-          className="me"
-          src="assets/images/me_batcheditor_fotor.png"
-          alt="Me"
-        /> */}
         <Image
           src={profile_picture}
           alt="Me"
@@ -179,11 +174,6 @@ const Homepage = () => {
         <ul className="d-flex align-items-center flex-wrap justify-content-center">
           <li>
             <a href="https://www.linkedin.com/in/dheeraj-p-girish/">
-              {/* <img
-                src="assets/images/LinkedIn_icon.svg.png "
-                style={{ width: 25, height: 25 }}
-                alt="React"
-              /> */}
               <Image
                 src={LindeinIcon}
                 alt="React"
@@ -197,13 +187,7 @@ const Homepage = () => {
         <div id="smooth-wrapper">
           <div id="smooth-content">
             <div className="left-sidebar">
-              <div className="sidebar-header d-flex align-items-center justify-content-between">
-                {/* <img src="assets/images/logo.png" alt="Logo" /> */}
-                {/* <span className="designation">
-                  Framer Designer &amp; Developer
-                </span> */}
-              </div>
-              {/* <img className="me" src="assets/images/me.jpg" alt="Me" /> */}
+              <div className="sidebar-header d-flex align-items-center justify-content-between"></div>
               <Image
                 src={profile_picture}
                 alt="Me"
@@ -216,11 +200,6 @@ const Homepage = () => {
               <ul className="d-flex align-items-center flex-wrap justify-content-center">
                 <li>
                   <a href="https://www.linkedin.com/in/dheeraj-p-girish/">
-                    {/* <img
-                src="assets/images/LinkedIn_icon.svg.png "
-                style={{ width: 25, height: 25 }}
-                alt="React"
-              /> */}
                     <Image
                       src={LindeinIcon}
                       alt="React"
@@ -599,13 +578,21 @@ const Homepage = () => {
                     >
                       <i className="las la-grip-vertical" /> portfolio
                     </h4>
-                    <h1
-                      className="scroll-animation"
-                      data-animation="fade_from_bottom"
-                    >
-                      Featured
-                      <span> Project</span>
-                    </h1>
+                    <div className="flex justify-between items-center">
+                      <h1
+                        className="scroll-animation"
+                        data-animation="fade_from_bottom"
+                      >
+                        Featured
+                        <span> Project</span>
+                      </h1>
+                      <Link
+                        className="all_Project cursor-pointer z-2 text-white"
+                        href="/projects"
+                      >
+                        <OpenInNewIcon />
+                      </Link>
+                    </div>
                   </motion.div>
                   <div className="row portfolio-items">
                     <div
@@ -618,10 +605,6 @@ const Homepage = () => {
                             // href="assets/images/portfolio1.jpg"
                             data-lightbox="example-1"
                           >
-                            {/* <img
-                              src="assets/images/portfolio1.jpg"
-                              alt="Portfolio"
-                            /> */}
                             <Image src={AiotelProject} alt="Featured Project" />
                           </a>
                           <ul className="portfolio-categories">
@@ -655,10 +638,6 @@ const Homepage = () => {
                             // href="assets/images/portfolio1.jpg"
                             data-lightbox="example-1"
                           >
-                            {/* <img
-                              src="assets/images/portfolio1.jpg"
-                              alt="Portfolio"
-                            /> */}
                             <Image src={KarmminProject} alt="Karmmin Project" />
                           </a>
                           <ul className="portfolio-categories">
@@ -679,10 +658,6 @@ const Homepage = () => {
                               Karmmin - Edu-tech platform
                             </span>
                           </h2>
-                          <Link className="all_Project " href="/projects">
-                            {" "}
-                            See all projects
-                          </Link>
                         </div>
                       </div>
                     </div>
