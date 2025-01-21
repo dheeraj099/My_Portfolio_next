@@ -17,7 +17,7 @@ interface Project {
   heroSection_image: string;
   description?: string | null;
   about?: string | null;
-  technologies?: Record<string, string>;
+  technologies?: Record<string, any>[];
   features?: string[] | null; // Array of strings (text[])
   contributions?: Record<string, any>[];
   live?: string | null;
@@ -25,9 +25,8 @@ interface Project {
   snapshots?: Record<string, any>[];
 }
 const page = () => {
-  
-const params = useParams() as { projectName: string };
-const { projectName } = params;
+  const params = useParams() as { projectName: string };
+  const { projectName } = params;
   const [projectData, setProjectData] = useState<Project | null>(null);
 
   useEffect(() => {
@@ -255,30 +254,24 @@ const { projectName } = params;
           <div className="flex w-full order-1 ml-0 sm:ml-6 pl-6 sm:order-2 sm:w-[35%] flex-col border-l  border-white sm:border-l-0 sm:border-r sm:border-white h-fit mr-0 sm:mr-32 pr-6 py-8 ">
             <span className="text-sm text-[#EDEDED]">TECHNOLOGIES</span>
             <div className="grid grid-cols-2 gap-4 mt-8">
-              <div className="bg-white text-white p-4">
-                <Image
-                  src={
-                    projectData?.images?.technologies?.nextjs ||
-                    "/fallback-image.jpg"
-                  } // Fallback image if null
-                  alt="Project about"
-                  width={0}
-                  height={0}
-                  style={{ width: "100%", height: "auto" }}
-                />
-              </div>
-              <div className="bg-white text-white p-4 flex items-center justify-center">
-                <Image
-                  src={
-                    projectData?.images?.technologies?.tailwind ||
-                    "/fallback-image.jpg"
-                  } // Fallback image if null
-                  alt="Project about"
-                  width={0}
-                  height={0}
-                  style={{ width: "100%", height: "auto" }}
-                />
-              </div>
+              {projectData?.technologies?.map((technology, index) => {
+                console.log("Mapped Technology:", technology); // Log the technology object
+                if (technology.image !== ""){
+
+                
+                return (
+                  <div key={index} className="bg-white text-white p-4 flex items-center justify-center">
+                    <Image
+                      src={technology.image || "/fallback-image.jpg"} // Use the "images" key value
+                      alt={`Technology ${index}`}
+                      width={0}
+                      height={0}
+                      style={{ width: "100%", height: "auto" }}
+                    />
+                  </div>
+                );
+              }
+              })}
             </div>
           </div>
         </div>
