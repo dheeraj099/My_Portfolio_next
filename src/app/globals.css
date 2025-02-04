@@ -73,7 +73,7 @@ body {
 
 
 /* From Uiverse.io by adamgiebl */ 
-.livebuttoncontainer button {
+.livebuttoncontainer #liveButton {
   display: flex;
   align-items: center;
   font-family: inherit;
@@ -88,21 +88,35 @@ body {
   letter-spacing: 0.05em;
   border-radius: 16px;
 }
+.livebuttoncontainer #nextButton {
+  display: flex;
+  align-items: center;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 17px;
+  padding: 0.8em 1.3em 0.8em 0.9em;
+  color: white;
+  /* background: #ad5389; */
+  /* background: linear-gradient(to right, #0f0c29, #302b63, #24243e); */
+  /* border: none; */
+  letter-spacing: 0.05em;
+  border-radius: 16px;
+}
 
-.livebuttoncontainer button svg {
+.livebuttoncontainer #liveButton svg {
   margin-right: 3px;
   transform: rotate(30deg);
   transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
 }
 
-.livebuttoncontainer button span {
+.livebuttoncontainer #liveButton span {
   transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
 }
 
-.livebuttoncontainer button:hover svg {
+.livebuttoncontainer  #liveButton:hover svg {
   transform: translateX(5px) rotate(90deg);
 }
 
-.livebuttoncontainer button:hover span {
+.livebuttoncontainer  #liveButton:hover span {
   transform: translateX(7px);
 }

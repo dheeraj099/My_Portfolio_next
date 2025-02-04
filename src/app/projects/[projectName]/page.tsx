@@ -2,7 +2,7 @@
 import Header from "@/app/common/Header";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
@@ -11,6 +11,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { supabase } from "../../../../supabase";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
+import AirplanemodeActiveOutlinedIcon from "@mui/icons-material/AirplanemodeActiveOutlined";
 interface Project {
   id: number;
   title: string;
@@ -28,6 +30,7 @@ const page = () => {
   const params = useParams() as { projectName: string };
   const { projectName } = params;
   const [projectData, setProjectData] = useState<Project | null>(null);
+  const [nextRoute, setNextRoute] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -43,10 +46,22 @@ const page = () => {
         setProjectData(data);
       }
     };
-
     fetchData();
   }, [projectName]);
 
+  useEffect(() => {
+    if (projectName === "Aiotel") {
+      setNextRoute("Karmmin");
+    } else if (projectName === "Karmmin") {
+      setNextRoute("TwinPad");
+    } else if (projectName === "TwinPad") {
+      setNextRoute("Statsphere");
+    } else if (projectName === "Statsphere") {
+      setNextRoute("Thingspad");
+    } else if (projectName === "Thingspad") {
+      setNextRoute("3dTwin");
+    }
+  }, [projectName]);
   const data = [
     {
       number: "01",
@@ -193,6 +208,10 @@ const page = () => {
       }
     };
   }, []);
+  const router = useRouter();
+  const handleNavigation = () => {
+    router.push(nextRoute); // Navigate to the next route
+  };
   return (
     <div className="flex flex-col flex-auto w-full bg-black">
       <Header />
@@ -207,14 +226,45 @@ const page = () => {
           style={{ width: "100%", height: "auto" }} // optional
           className="object-cover"
         />
-
-        <div className="flex flex-col gap-2 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 ">
+        {/* herosection Decription  */}
+        <div className="flex flex-col gap-2 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full">
           <span className="text-2xl  sm:text-7xl text-white text-center font-medium uppercase">
             {projectData?.title}
           </span>
-          <span className="text-2xl sm:text-5xl text-white font-light">
+          <span className="text-2xl sm:text-5xl text-white font-light text-center">
             {projectData?.description}
           </span>
+          <div className="livebuttoncontainer flex w-full items-end justify-center mt-6 gap-6">
+            <button id="liveButton">
+              <svg
+                height="24"
+                width="44"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M0 0h24v24H0z" fill="none"></path>
+                <path
+                  d="M5 13c0-5.088 2.903-9.436 7-11.182C16.097 3.564 19 7.912 19 13c0 .823-.076 1.626-.22 2.403l1.94 1.832a.5.5 0 0 1 .095.603l-2.495 4.575a.5.5 0 0 1-.793.114l-2.234-2.234a1 1 0 0 0-.707-.293H9.414a1 1 0 0 0-.707.293l-2.234 2.234a.5.5 0 0 1-.793-.114l-2.495-4.575a.5.5 0 0 1 .095-.603l1.94-1.832C5.077 14.626 5 13.823 5 13zm1.476 6.696l.817-.817A3 3 0 0 1 9.414 18h5.172a3 3 0 0 1 2.121.879l.817.817.982-1.8-1.1-1.04a2 2 0 0 1-.593-1.82c.124-.664.187-1.345.187-2.036 0-3.87-1.995-7.3-5-8.96C8.995 5.7 7 9.13 7 13c0 .691.063 1.372.187 2.037a2 2 0 0 1-.593 1.82l-1.1 1.039.982 1.8zM12 13a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"
+                  fill="currentColor"
+                ></path>
+              </svg>
+              <a href={`${projectData?.live}`}>
+                <span className="text-[#EDEDED]">Live</span>
+              </a>
+            </button>
+            <hr className="flex w-0.5 h-[52px] bg-white" />
+            <button
+              id="nextButton"
+              disabled={projectName === "3dTwin"}
+              onClick={handleNavigation}
+              className="flex items-center text-[#EDEDED] bg-custom-gradient disabled:text-gray-400 disabled:bg-custom-gradient-disabled !disabled:cursor-default"
+            >
+              <AirplanemodeActiveOutlinedIcon
+                sx={{ marginRight: "3px", height: "24px", width: "44px" }}
+              />
+              Next
+            </button>
+          </div>
         </div>
       </div>
 
@@ -244,7 +294,7 @@ const page = () => {
         <div className="flex flex-col sm:flex-row w-full  items-center">
           <div className="flex flex-col order-2 sm:order-1  ml-0 sm:ml-6 pl-6 border-white h-fit  w-full sm:w-[65%]  justify-start items-start">
             <Image
-              src={projectData?.images?.about || "/fallback-image.jpg"} // Fallback image if null
+              src={projectData?.images?.technology || "/fallback-image.jpg"} // Fallback image if null
               alt="Project about"
               width={650}
               height={0}
@@ -255,22 +305,22 @@ const page = () => {
             <span className="text-sm text-[#EDEDED]">TECHNOLOGIES</span>
             <div className="grid grid-cols-2 gap-4 mt-8">
               {projectData?.technologies?.map((technology, index) => {
-                console.log("Mapped Technology:", technology); // Log the technology object
-                if (technology.image !== ""){
-
-                
-                return (
-                  <div key={index} className="bg-white text-white p-4 flex items-center justify-center">
-                    <Image
-                      src={technology.image || "/fallback-image.jpg"} // Use the "images" key value
-                      alt={`Technology ${index}`}
-                      width={0}
-                      height={0}
-                      style={{ width: "100%", height: "auto" }}
-                    />
-                  </div>
-                );
-              }
+                if (technology.image !== "") {
+                  return (
+                    <div
+                      key={index}
+                      className="bg-white text-white p-4 flex items-center justify-center"
+                    >
+                      <Image
+                        src={technology.image || "/fallback-image.jpg"} // Use the "images" key value
+                        alt={`Technology ${index}`}
+                        width={0}
+                        height={0}
+                        style={{ width: "100%", height: "auto" }}
+                      />
+                    </div>
+                  );
+                }
               })}
             </div>
           </div>
@@ -291,7 +341,9 @@ const page = () => {
                   className="flex flex-col gap-7 items-center justify-center py-4 px-2 rounded-2xl bg-white"
                 >
                   <div className="flex w-12 h-12  bg-[#474646] rounded-full items-center justify-center">
-                    <span className="font-bold text-2xl">{index + 1}</span>
+                    <span className="font-bold text-2xl text-white">
+                      {index + 1}
+                    </span>
                   </div>
                   <span className="text-black text-center font-medium">
                     {feature}
@@ -379,25 +431,6 @@ const page = () => {
               <span className="text-sm text-center text-[#EDEDED]">
                 SNAPSHOTS
               </span>
-              <div className="livebuttoncontainer flex w-full items-end justify-end">
-                <button className=" mr-[50px]">
-                  <svg
-                    height="24"
-                    width="24"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M0 0h24v24H0z" fill="none"></path>
-                    <path
-                      d="M5 13c0-5.088 2.903-9.436 7-11.182C16.097 3.564 19 7.912 19 13c0 .823-.076 1.626-.22 2.403l1.94 1.832a.5.5 0 0 1 .095.603l-2.495 4.575a.5.5 0 0 1-.793.114l-2.234-2.234a1 1 0 0 0-.707-.293H9.414a1 1 0 0 0-.707.293l-2.234 2.234a.5.5 0 0 1-.793-.114l-2.495-4.575a.5.5 0 0 1 .095-.603l1.94-1.832C5.077 14.626 5 13.823 5 13zm1.476 6.696l.817-.817A3 3 0 0 1 9.414 18h5.172a3 3 0 0 1 2.121.879l.817.817.982-1.8-1.1-1.04a2 2 0 0 1-.593-1.82c.124-.664.187-1.345.187-2.036 0-3.87-1.995-7.3-5-8.96C8.995 5.7 7 9.13 7 13c0 .691.063 1.372.187 2.037a2 2 0 0 1-.593 1.82l-1.1 1.039.982 1.8zM12 13a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"
-                      fill="currentColor"
-                    ></path>
-                  </svg>
-                  <a href={`${projectData?.live}`}>
-                    <span className="text-[#EDEDED]">Live</span>
-                  </a>
-                </button>
-              </div>
             </div>
             <hr className="border border-white sm:w-[30%] w-[80%]" />
           </div>
