@@ -26,8 +26,8 @@ const Header = () => {
       </div>
       <div className=" flex items-center border border-white  rounded-lg h-fit sm:py-1 sm:px-1 py-0 px-1 cursor-pointer hover:bg-[#212121] ">
       <a
-        href="/DHEERAJ_P_GIRISH_Software_Engineer.pdf"  // Replace with the correct path to your CV file
-        download="Dheeraj_P_GIRISH_CV.pdf"    // Set the file name for download
+        href="/DHEERAJ_P_GIRISH_Software_Enginner.pdf"  // Replace with the correct path to your CV file
+        download="DHEERAJ_P_GIRISH_Software_Enginner.pdf"    // Set the file name for download
         // className="flex items-center border border-white rounded-lg h-fit py-1 px-1 cursor-pointer hover:bg-[#212121]"
       >
         <span className="text-xs font-semibold p-0 m-0 text-white">Download CV</span>
